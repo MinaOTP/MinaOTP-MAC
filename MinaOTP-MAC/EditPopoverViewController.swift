@@ -1,0 +1,135 @@
+//
+//  EditPopoverViewController.swift
+//  MinaOTP-MAC
+//
+//  Created by 武建明 on 2018/8/6.
+//  Copyright © 2018年 Four_w. All rights reserved.
+//
+
+import Cocoa
+
+class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
+
+    let cancleButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 40, height: 20), title: "取消")
+    let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 148, y: 12, width: 40, height: 20), title: "保存")
+    var editRow:Int = -1
+    let textColor = NSColor.init(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+
+    override func loadView() {
+        self.view = NSView(frame: CGRect(x: 0, y: 0, width: 200, height: 250))
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.config()
+        let defaults = UserDefaults.standard
+        var allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+        let totpDic = Tools().totpDictionaryFormat(code: allItems[editRow])
+        otpauthTextField.stringValue = (totpDic["otpauth"] as? String)!
+        issuerTextField.stringValue = (totpDic["issuer"] as? String)!
+        secretTextFiled.stringValue = (totpDic["secret"] as? String)!
+    }
+    override func awakeFromNib() {
+
+    }
+    private func config() {
+        self.view.addSubview(cancleButton)
+        self.view.addSubview(saveButton)
+        self.view.addSubview(self.otpauthTitleTextField)
+        self.view.addSubview(self.otpauthTextField)
+        self.view.addSubview(self.issuerTitleTextField)
+        self.view.addSubview(self.issuerTextField)
+        self.view.addSubview(self.secretTitleTextField)
+        self.view.addSubview(self.secretTextFiled)
+
+        cancleButton.target = self
+        saveButton.target = self
+        cancleButton.action = #selector(self.cancleButtonAction)
+        saveButton.action = #selector(self.saveButtonAction(button:))
+
+        saveButton.isEnabled = false
+    }
+    lazy var otpauthTitleTextField: NSTextField = {
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 220, width: 100, height: 18), textColor: textColor, text: "请输入otpauth:", font: 10)
+        lab.isEditable = false
+        lab.delegate = self
+        return lab
+    }()
+    lazy var otpauthTextField: NSTextField = {
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 185, width: 180, height: 35), textColor: textColor, text: "", font: 12)
+        lab.delegate = self
+        lab.isBordered = true
+        lab.focusRingType = .none
+        lab.isBezeled = true
+        lab.bezelStyle = .squareBezel
+        lab.layer?.borderWidth = 1
+        lab.layer?.borderColor = NSColor.orange.cgColor
+        return lab
+    }()
+    lazy var issuerTitleTextField: NSTextField = {
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 160, width: 100, height: 18), textColor: textColor, text: "请输入issuer:", font: 10)
+        lab.isEditable = false
+        return lab
+    }()
+    lazy var issuerTextField: NSTextField = {
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 125, width: 180, height: 35), textColor: textColor, text: "", font: 12)
+        lab.delegate = self
+        lab.delegate = self
+        lab.isBordered = true
+        lab.focusRingType = .none
+        lab.isBezeled = true
+        lab.bezelStyle = .squareBezel
+        lab.layer?.borderWidth = 1
+        lab.layer?.borderColor = NSColor.orange.cgColor
+        return lab
+    }()
+    lazy var secretTitleTextField: NSTextField = {
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 100, width: 100, height: 18), textColor: textColor, text: "请输入secret:", font: 10)
+        lab.isEditable = false
+        lab.delegate = self
+        return lab
+    }()
+    lazy var secretTextFiled: NSTextField = {
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 55, width: 180, height: 45), textColor: textColor, text: "", font: 12)
+        lab.delegate = self
+        lab.isBordered = true
+        lab.focusRingType = .none
+        lab.isBezeled = true
+        lab.bezelStyle = .squareBezel
+        lab.layer?.borderWidth = 1
+        lab.layer?.borderColor = NSColor.orange.cgColor
+        return lab
+    }()
+    override func controlTextDidChange(_ obj: Notification) {
+        if self.otpauthTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
+            saveButton.isEnabled = false
+        }else{
+            print("可以输入了")
+            saveButton.isEnabled = true
+        }
+
+    }
+    @objc func cancleButtonAction() {
+        print("cancleButtonAction")
+        NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"edit_cancle"])
+    }
+
+    @objc func saveButtonAction(button: NSButton) {
+        print("saveButtonAction")
+        let otp = Tools().totpStringFormat(otpauth: self.otpauthTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
+
+        // 将数据保存到UserDefaults
+        let defaults = UserDefaults.standard
+        var allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+        allItems.remove(at: editRow)
+        allItems.insert(otp, at: editRow)
+        defaults.set(allItems, forKey: "MinaOtpMAC")
+//        Tools().showAlert(message: "修改成功")
+//        ShowTips().showTip(message: "修改成功", view: self.view)
+        NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"edit_save"])
+    }
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+    }
+}

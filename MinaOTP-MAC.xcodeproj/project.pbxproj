@@ -1,0 +1,642 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20248BA421117A900043D902 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20248BA321117A900043D902 /* PopoverViewController.swift */; };
+		20248BA6211195850043D902 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20248BA5211195850043D902 /* FlatButton.swift */; };
+		20248BA821119AC10043D902 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20248BA721119AC10043D902 /* Tools.swift */; };
+		20776B092114318B00C94441 /* GeneratorTotp.m in Sources */ = {isa = PBXBuildFile; fileRef = 20776B072114318B00C94441 /* GeneratorTotp.m */; };
+		20776B0A2114318B00C94441 /* Base32Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20776B082114318B00C94441 /* Base32Addition.m */; };
+		20776B0D2114597800C94441 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20776B0C2114597700C94441 /* ProgressView.swift */; };
+		20887FE6211421DD000ACF00 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20887FE5211421DD000ACF00 /* CellView.swift */; };
+		20887FE8211426BA000ACF00 /* AddPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20887FE7211426BA000ACF00 /* AddPopoverViewController.swift */; };
+		20FBA95721106EB10017BFC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBA95621106EB10017BFC3 /* AppDelegate.swift */; };
+		20FBA95921106EB20017BFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FBA95821106EB20017BFC3 /* Assets.xcassets */; };
+		20FBA95C21106EB20017BFC3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FBA95A21106EB20017BFC3 /* MainMenu.xib */; };
+		20FBA96821106EB20017BFC3 /* MinaOTP_MACTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBA96721106EB20017BFC3 /* MinaOTP_MACTests.swift */; };
+		20FBA97321106EB20017BFC3 /* MinaOTP_MACUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBA97221106EB20017BFC3 /* MinaOTP_MACUITests.swift */; };
+		20FC65092117F84D002DF759 /* CSTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC65082117F84D002DF759 /* CSTableRowView.swift */; };
+		20FC650B211849D1002DF759 /* ShowTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650A211849D1002DF759 /* ShowTips.swift */; };
+		20FC650D21185C7A002DF759 /* EditPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650C21185C7A002DF759 /* EditPopoverViewController.swift */; };
+		20FC650F21194BE9002DF759 /* AddWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650E21194BE9002DF759 /* AddWindow.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20FBA96421106EB20017BFC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20FBA94B21106EB10017BFC3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20FBA95221106EB10017BFC3;
+			remoteInfo = "MinaOTP-MAC";
+		};
+		20FBA96F21106EB20017BFC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20FBA94B21106EB10017BFC3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20FBA95221106EB10017BFC3;
+			remoteInfo = "MinaOTP-MAC";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		20248BA321117A900043D902 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		20248BA5211195850043D902 /* FlatButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
+		20248BA721119AC10043D902 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		20776B052114318B00C94441 /* GeneratorTotp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneratorTotp.h; sourceTree = "<group>"; };
+		20776B062114318B00C94441 /* Base32Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base32Addition.h; sourceTree = "<group>"; };
+		20776B072114318B00C94441 /* GeneratorTotp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratorTotp.m; sourceTree = "<group>"; };
+		20776B082114318B00C94441 /* Base32Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base32Addition.m; sourceTree = "<group>"; };
+		20776B0B2114323700C94441 /* MinaOTP-MAC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MinaOTP-MAC-Bridging-Header.h"; sourceTree = "<group>"; };
+		20776B0C2114597700C94441 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		20887FE5211421DD000ACF00 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		20887FE7211426BA000ACF00 /* AddPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPopoverViewController.swift; sourceTree = "<group>"; };
+		20FBA95321106EB10017BFC3 /* MinaOTP-MAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MinaOTP-MAC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20FBA95621106EB10017BFC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		20FBA95821106EB20017BFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		20FBA95B21106EB20017BFC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		20FBA95D21106EB20017BFC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20FBA95E21106EB20017BFC3 /* MinaOTP_MAC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinaOTP_MAC.entitlements; sourceTree = "<group>"; };
+		20FBA96321106EB20017BFC3 /* MinaOTP-MACTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MinaOTP-MACTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20FBA96721106EB20017BFC3 /* MinaOTP_MACTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinaOTP_MACTests.swift; sourceTree = "<group>"; };
+		20FBA96921106EB20017BFC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20FBA96E21106EB20017BFC3 /* MinaOTP-MACUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MinaOTP-MACUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20FBA97221106EB20017BFC3 /* MinaOTP_MACUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinaOTP_MACUITests.swift; sourceTree = "<group>"; };
+		20FBA97421106EB20017BFC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20FC65082117F84D002DF759 /* CSTableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTableRowView.swift; sourceTree = "<group>"; };
+		20FC650A211849D1002DF759 /* ShowTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTips.swift; sourceTree = "<group>"; };
+		20FC650C21185C7A002DF759 /* EditPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopoverViewController.swift; sourceTree = "<group>"; };
+		20FC650E21194BE9002DF759 /* AddWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWindow.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20FBA95021106EB10017BFC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FBA96021106EB20017BFC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FBA96B21106EB20017BFC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		20776B042114318B00C94441 /* OTPGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				20776B062114318B00C94441 /* Base32Addition.h */,
+				20776B082114318B00C94441 /* Base32Addition.m */,
+				20776B052114318B00C94441 /* GeneratorTotp.h */,
+				20776B072114318B00C94441 /* GeneratorTotp.m */,
+			);
+			path = OTPGenerator;
+			sourceTree = "<group>";
+		};
+		20FBA94A21106EB10017BFC3 = {
+			isa = PBXGroup;
+			children = (
+				20FBA95521106EB10017BFC3 /* MinaOTP-MAC */,
+				20FBA96621106EB20017BFC3 /* MinaOTP-MACTests */,
+				20FBA97121106EB20017BFC3 /* MinaOTP-MACUITests */,
+				20FBA95421106EB10017BFC3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		20FBA95421106EB10017BFC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20FBA95321106EB10017BFC3 /* MinaOTP-MAC.app */,
+				20FBA96321106EB20017BFC3 /* MinaOTP-MACTests.xctest */,
+				20FBA96E21106EB20017BFC3 /* MinaOTP-MACUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20FBA95521106EB10017BFC3 /* MinaOTP-MAC */ = {
+			isa = PBXGroup;
+			children = (
+				20776B042114318B00C94441 /* OTPGenerator */,
+				20FBA95621106EB10017BFC3 /* AppDelegate.swift */,
+				20248BA321117A900043D902 /* PopoverViewController.swift */,
+				20887FE7211426BA000ACF00 /* AddPopoverViewController.swift */,
+				20FC650E21194BE9002DF759 /* AddWindow.swift */,
+				20FC650C21185C7A002DF759 /* EditPopoverViewController.swift */,
+				20887FE5211421DD000ACF00 /* CellView.swift */,
+				20FC65082117F84D002DF759 /* CSTableRowView.swift */,
+				20248BA5211195850043D902 /* FlatButton.swift */,
+				20776B0C2114597700C94441 /* ProgressView.swift */,
+				20248BA721119AC10043D902 /* Tools.swift */,
+				20FC650A211849D1002DF759 /* ShowTips.swift */,
+				20776B0B2114323700C94441 /* MinaOTP-MAC-Bridging-Header.h */,
+				20FBA95821106EB20017BFC3 /* Assets.xcassets */,
+				20FBA95A21106EB20017BFC3 /* MainMenu.xib */,
+				20FBA95D21106EB20017BFC3 /* Info.plist */,
+				20FBA95E21106EB20017BFC3 /* MinaOTP_MAC.entitlements */,
+			);
+			path = "MinaOTP-MAC";
+			sourceTree = "<group>";
+		};
+		20FBA96621106EB20017BFC3 /* MinaOTP-MACTests */ = {
+			isa = PBXGroup;
+			children = (
+				20FBA96721106EB20017BFC3 /* MinaOTP_MACTests.swift */,
+				20FBA96921106EB20017BFC3 /* Info.plist */,
+			);
+			path = "MinaOTP-MACTests";
+			sourceTree = "<group>";
+		};
+		20FBA97121106EB20017BFC3 /* MinaOTP-MACUITests */ = {
+			isa = PBXGroup;
+			children = (
+				20FBA97221106EB20017BFC3 /* MinaOTP_MACUITests.swift */,
+				20FBA97421106EB20017BFC3 /* Info.plist */,
+			);
+			path = "MinaOTP-MACUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20FBA95221106EB10017BFC3 /* MinaOTP-MAC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20FBA97721106EB20017BFC3 /* Build configuration list for PBXNativeTarget "MinaOTP-MAC" */;
+			buildPhases = (
+				20FBA94F21106EB10017BFC3 /* Sources */,
+				20FBA95021106EB10017BFC3 /* Frameworks */,
+				20FBA95121106EB10017BFC3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MinaOTP-MAC";
+			productName = "MinaOTP-MAC";
+			productReference = 20FBA95321106EB10017BFC3 /* MinaOTP-MAC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		20FBA96221106EB20017BFC3 /* MinaOTP-MACTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20FBA97A21106EB20017BFC3 /* Build configuration list for PBXNativeTarget "MinaOTP-MACTests" */;
+			buildPhases = (
+				20FBA95F21106EB20017BFC3 /* Sources */,
+				20FBA96021106EB20017BFC3 /* Frameworks */,
+				20FBA96121106EB20017BFC3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20FBA96521106EB20017BFC3 /* PBXTargetDependency */,
+			);
+			name = "MinaOTP-MACTests";
+			productName = "MinaOTP-MACTests";
+			productReference = 20FBA96321106EB20017BFC3 /* MinaOTP-MACTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		20FBA96D21106EB20017BFC3 /* MinaOTP-MACUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20FBA97D21106EB20017BFC3 /* Build configuration list for PBXNativeTarget "MinaOTP-MACUITests" */;
+			buildPhases = (
+				20FBA96A21106EB20017BFC3 /* Sources */,
+				20FBA96B21106EB20017BFC3 /* Frameworks */,
+				20FBA96C21106EB20017BFC3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20FBA97021106EB20017BFC3 /* PBXTargetDependency */,
+			);
+			name = "MinaOTP-MACUITests";
+			productName = "MinaOTP-MACUITests";
+			productReference = 20FBA96E21106EB20017BFC3 /* MinaOTP-MACUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20FBA94B21106EB10017BFC3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Four_w;
+				TargetAttributes = {
+					20FBA95221106EB10017BFC3 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					20FBA96221106EB20017BFC3 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 20FBA95221106EB10017BFC3;
+					};
+					20FBA96D21106EB20017BFC3 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 20FBA95221106EB10017BFC3;
+					};
+				};
+			};
+			buildConfigurationList = 20FBA94E21106EB10017BFC3 /* Build configuration list for PBXProject "MinaOTP-MAC" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 20FBA94A21106EB10017BFC3;
+			productRefGroup = 20FBA95421106EB10017BFC3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20FBA95221106EB10017BFC3 /* MinaOTP-MAC */,
+				20FBA96221106EB20017BFC3 /* MinaOTP-MACTests */,
+				20FBA96D21106EB20017BFC3 /* MinaOTP-MACUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20FBA95121106EB10017BFC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FBA95921106EB20017BFC3 /* Assets.xcassets in Resources */,
+				20FBA95C21106EB20017BFC3 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FBA96121106EB20017BFC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FBA96C21106EB20017BFC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20FBA94F21106EB10017BFC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20887FE8211426BA000ACF00 /* AddPopoverViewController.swift in Sources */,
+				20248BA6211195850043D902 /* FlatButton.swift in Sources */,
+				20887FE6211421DD000ACF00 /* CellView.swift in Sources */,
+				20248BA421117A900043D902 /* PopoverViewController.swift in Sources */,
+				20FC650B211849D1002DF759 /* ShowTips.swift in Sources */,
+				20FBA95721106EB10017BFC3 /* AppDelegate.swift in Sources */,
+				20FC650D21185C7A002DF759 /* EditPopoverViewController.swift in Sources */,
+				20776B092114318B00C94441 /* GeneratorTotp.m in Sources */,
+				20FC65092117F84D002DF759 /* CSTableRowView.swift in Sources */,
+				20248BA821119AC10043D902 /* Tools.swift in Sources */,
+				20776B0A2114318B00C94441 /* Base32Addition.m in Sources */,
+				20776B0D2114597800C94441 /* ProgressView.swift in Sources */,
+				20FC650F21194BE9002DF759 /* AddWindow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FBA95F21106EB20017BFC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FBA96821106EB20017BFC3 /* MinaOTP_MACTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20FBA96A21106EB20017BFC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FBA97321106EB20017BFC3 /* MinaOTP_MACUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		20FBA96521106EB20017BFC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20FBA95221106EB10017BFC3 /* MinaOTP-MAC */;
+			targetProxy = 20FBA96421106EB20017BFC3 /* PBXContainerItemProxy */;
+		};
+		20FBA97021106EB20017BFC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20FBA95221106EB10017BFC3 /* MinaOTP-MAC */;
+			targetProxy = 20FBA96F21106EB20017BFC3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		20FBA95A21106EB20017BFC3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20FBA95B21106EB20017BFC3 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		20FBA97521106EB20017BFC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		20FBA97621106EB20017BFC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		20FBA97821106EB20017BFC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MinaOTP-MAC/MinaOTP_MAC.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BB5VK42K87;
+				INFOPLIST_FILE = "MinaOTP-MAC/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MAC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MinaOTP-MAC/MinaOTP-MAC-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		20FBA97921106EB20017BFC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MinaOTP-MAC/MinaOTP_MAC.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BB5VK42K87;
+				INFOPLIST_FILE = "MinaOTP-MAC/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MAC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MinaOTP-MAC/MinaOTP-MAC-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		20FBA97B21106EB20017BFC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BB5VK42K87;
+				INFOPLIST_FILE = "MinaOTP-MACTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinaOTP-MAC.app/Contents/MacOS/MinaOTP-MAC";
+			};
+			name = Debug;
+		};
+		20FBA97C21106EB20017BFC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BB5VK42K87;
+				INFOPLIST_FILE = "MinaOTP-MACTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinaOTP-MAC.app/Contents/MacOS/MinaOTP-MAC";
+			};
+			name = Release;
+		};
+		20FBA97E21106EB20017BFC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BB5VK42K87;
+				INFOPLIST_FILE = "MinaOTP-MACUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = "MinaOTP-MAC";
+			};
+			name = Debug;
+		};
+		20FBA97F21106EB20017BFC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BB5VK42K87;
+				INFOPLIST_FILE = "MinaOTP-MACUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = "MinaOTP-MAC";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20FBA94E21106EB10017BFC3 /* Build configuration list for PBXProject "MinaOTP-MAC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FBA97521106EB20017BFC3 /* Debug */,
+				20FBA97621106EB20017BFC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20FBA97721106EB20017BFC3 /* Build configuration list for PBXNativeTarget "MinaOTP-MAC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FBA97821106EB20017BFC3 /* Debug */,
+				20FBA97921106EB20017BFC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20FBA97A21106EB20017BFC3 /* Build configuration list for PBXNativeTarget "MinaOTP-MACTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FBA97B21106EB20017BFC3 /* Debug */,
+				20FBA97C21106EB20017BFC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20FBA97D21106EB20017BFC3 /* Build configuration list for PBXNativeTarget "MinaOTP-MACUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20FBA97E21106EB20017BFC3 /* Debug */,
+				20FBA97F21106EB20017BFC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20FBA94B21106EB10017BFC3 /* Project object */;
+}
