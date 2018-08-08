@@ -24,6 +24,8 @@
 		20FC650B211849D1002DF759 /* ShowTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650A211849D1002DF759 /* ShowTips.swift */; };
 		20FC650D21185C7A002DF759 /* EditPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650C21185C7A002DF759 /* EditPopoverViewController.swift */; };
 		20FC650F21194BE9002DF759 /* AddWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650E21194BE9002DF759 /* AddWindow.swift */; };
+		20FC6511211A8B38002DF759 /* MinaOtp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 20FC6510211A8B38002DF759 /* MinaOtp.icns */; };
+		20FC6513211A9B3B002DF759 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC6512211A9B3B002DF759 /* StatusItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,9 @@
 		20FC650A211849D1002DF759 /* ShowTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTips.swift; sourceTree = "<group>"; };
 		20FC650C21185C7A002DF759 /* EditPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopoverViewController.swift; sourceTree = "<group>"; };
 		20FC650E21194BE9002DF759 /* AddWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWindow.swift; sourceTree = "<group>"; };
+		20FC6510211A8B38002DF759 /* MinaOtp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MinaOtp.icns; sourceTree = "<group>"; };
+		20FC6512211A9B3B002DF759 /* StatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
+		20FC6514211AE33B002DF759 /* MinaOTP-MAC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MinaOTP-MAC.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +137,7 @@
 		20FBA95521106EB10017BFC3 /* MinaOTP-MAC */ = {
 			isa = PBXGroup;
 			children = (
+				20FC6514211AE33B002DF759 /* MinaOTP-MAC.entitlements */,
 				20776B042114318B00C94441 /* OTPGenerator */,
 				20FBA95621106EB10017BFC3 /* AppDelegate.swift */,
 				20248BA321117A900043D902 /* PopoverViewController.swift */,
@@ -142,9 +148,11 @@
 				20FC65082117F84D002DF759 /* CSTableRowView.swift */,
 				20248BA5211195850043D902 /* FlatButton.swift */,
 				20776B0C2114597700C94441 /* ProgressView.swift */,
+				20FC6512211A9B3B002DF759 /* StatusItemView.swift */,
 				20248BA721119AC10043D902 /* Tools.swift */,
 				20FC650A211849D1002DF759 /* ShowTips.swift */,
 				20776B0B2114323700C94441 /* MinaOTP-MAC-Bridging-Header.h */,
+				20FC6510211A8B38002DF759 /* MinaOtp.icns */,
 				20FBA95821106EB20017BFC3 /* Assets.xcassets */,
 				20FBA95A21106EB20017BFC3 /* MainMenu.xib */,
 				20FBA95D21106EB20017BFC3 /* Info.plist */,
@@ -239,6 +247,11 @@
 				TargetAttributes = {
 					20FBA95221106EB10017BFC3 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					20FBA96221106EB20017BFC3 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -276,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20FBA95921106EB20017BFC3 /* Assets.xcassets in Resources */,
+				20FC6511211A8B38002DF759 /* MinaOtp.icns in Resources */,
 				20FBA95C21106EB20017BFC3 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +318,7 @@
 				20887FE8211426BA000ACF00 /* AddPopoverViewController.swift in Sources */,
 				20248BA6211195850043D902 /* FlatButton.swift in Sources */,
 				20887FE6211421DD000ACF00 /* CellView.swift in Sources */,
+				20FC6513211A9B3B002DF759 /* StatusItemView.swift in Sources */,
 				20248BA421117A900043D902 /* PopoverViewController.swift in Sources */,
 				20FC650B211849D1002DF759 /* ShowTips.swift in Sources */,
 				20FBA95721106EB10017BFC3 /* AppDelegate.swift in Sources */,
@@ -477,17 +492,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "MinaOTP-MAC/MinaOTP_MAC.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "MinaOTP-MAC/MinaOTP-MAC.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BB5VK42K87;
+				DEVELOPMENT_TEAM = 3NQR38UJVN;
 				INFOPLIST_FILE = "MinaOTP-MAC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MAC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MinaOTP-MAC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MinaOTP-MAC/MinaOTP-MAC-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -498,17 +513,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "MinaOTP-MAC/MinaOTP_MAC.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "MinaOTP-MAC/MinaOTP-MAC.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BB5VK42K87;
+				DEVELOPMENT_TEAM = 3NQR38UJVN;
 				INFOPLIST_FILE = "MinaOTP-MAC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MAC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MinaOTP-MAC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MinaOTP-MAC/MinaOTP-MAC-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

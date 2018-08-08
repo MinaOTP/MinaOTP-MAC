@@ -27,11 +27,9 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         self.config()
         NotificationCenter.default.addObserver(self, selector: #selector(notificationAction), name: NSNotification.Name(rawValue:"reloadData"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(notificationAction), name: NSNotification.Name(rawValue:"addData"), object: nil)
-
     }
     override func awakeFromNib() {
     }
@@ -128,9 +126,11 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     func startTimer() {
         print("计时器开始")
         self.reloadData()
-        totpTableView.reloadData()
-        oldTimeStamp = Int(Date().timeIntervalSince1970)/30
-        self.timer.fireDate = Date.distantPast
+        if totpArray.count > 0 {
+            totpTableView.reloadData()
+            oldTimeStamp = Int(Date().timeIntervalSince1970)/30
+            self.timer.fireDate = Date.distantPast
+        }
     }
     func stopTimer() {
         print("计时器停止")
@@ -170,8 +170,10 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         }
     }
     @objc func deleteRowAction() {
-        totpTableView.removeRows(at: [clickedRow], withAnimation: .slideRight)
+        print("deleteRowAction")
+        print(clickedRow)
         totpArray.remove(at: clickedRow)
+        totpTableView.removeRows(at: [clickedRow], withAnimation: .slideRight)
         let defaults = UserDefaults.standard
         defaults.set(self.totpArray, forKey: "MinaOtpMAC")
     }
@@ -196,7 +198,6 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         }
     }
     @objc func importButtonAction() {
-        print("importButtonAction")
         let openPanel = NSOpenPanel.init()
         openPanel.prompt = "选择"
         openPanel.allowedFileTypes = ["json"]
@@ -206,21 +207,56 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         openPanel.canChooseFiles = true
         let code = openPanel.runModal()
         if code.rawValue == 1{
-            print(openPanel.url ?? "123")
             let jsonData = NSData.init(contentsOf: openPanel.url!)
-            print(jsonData ?? "123")
             let decoder = JSONDecoder()
             do {
                 let otpModelArray = try decoder.decode([OtpModel].self, from: jsonData! as Data)
-                print("解析成功:\(otpModelArray)")
+
+                // 将数据保存到UserDefaults
+                let defaults = UserDefaults.standard
+                var allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+
+                for item in otpModelArray{
+                    let otp = Tools().totpStringFormat(otpauth: item.otpauth, issuer: item.issuer, secret: item.secret)
+                    allItems.append(otp)
+                }
+                defaults.set(allItems, forKey: "MinaOtpMAC")
+                Tools().showAlert(message: "添加成功,请返回程序查看")
+
             } catch let error{
                 print(error)
                 Tools().showAlert(message: "解析失败,请提供正确的json内容")
             }
         }
     }
+
     @objc func exportButtonAction() {
-        print("exportButtonAction")
+        let savePanel = NSSavePanel()
+        savePanel.title = "选择文件导出位置"
+        savePanel.nameFieldStringValue = "MinaOtp.json"
+        savePanel.canCreateDirectories = true
+        savePanel.isExtensionHidden = false
+        let i = savePanel.runModal()
+        if i == NSApplication.ModalResponse.OK {
+
+            // 将数据保存到UserDefaults
+            let defaults = UserDefaults.standard
+            let allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+            var temArray = [Any]()
+            for item in allItems{
+                let otpDic = Tools().totpDictionaryFormat(code: item)
+                temArray.append(otpDic)
+            }
+            let temJsonData = try! JSONSerialization.data(withJSONObject: temArray, options: .prettyPrinted)
+            let temJsonStr = String.init(data: temJsonData, encoding: .utf8)
+
+            do {
+                try temJsonStr?.write(to: savePanel.url!, atomically: true, encoding: .utf8)
+                Tools().showAlert(message: "导出成功")
+            } catch {
+                Tools().showAlert(message: "导出失败,请重新尝试")
+            }
+        }
     }
     @objc func addButtonAction(button: NSButton) {
         print("addButtonAction")

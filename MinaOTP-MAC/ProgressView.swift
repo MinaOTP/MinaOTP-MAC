@@ -43,7 +43,7 @@ class ProgressView: NSView {
         layer.lineCap = kCALineCapSquare
         layer.strokeColor = NSColor.green.cgColor
         layer.path = self.bezierPath.cgPath
-        layer.strokeEnd = 0.5
+        layer.strokeEnd = 0
         return layer
     }()
     lazy var bezierPath: NSBezierPath = {
@@ -54,7 +54,7 @@ class ProgressView: NSView {
         return path
     }()
     func setProgress(value: CGFloat) {
-        if value>0.80 {
+        if value>0.85 {
             self.topShapeLayer.strokeColor = NSColor.red.cgColor
 
         }else{
