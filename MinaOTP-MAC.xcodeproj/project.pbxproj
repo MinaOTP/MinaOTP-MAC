@@ -24,8 +24,8 @@
 		20FC650B211849D1002DF759 /* ShowTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650A211849D1002DF759 /* ShowTips.swift */; };
 		20FC650D21185C7A002DF759 /* EditPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650C21185C7A002DF759 /* EditPopoverViewController.swift */; };
 		20FC650F21194BE9002DF759 /* AddWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650E21194BE9002DF759 /* AddWindow.swift */; };
-		20FC6511211A8B38002DF759 /* MinaOtp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 20FC6510211A8B38002DF759 /* MinaOtp.icns */; };
 		20FC6513211A9B3B002DF759 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC6512211A9B3B002DF759 /* StatusItemView.swift */; };
+		20FC6516211AEEC1002DF759 /* MinaOtpWhite.icns in Resources */ = {isa = PBXBuildFile; fileRef = 20FC6515211AEEC1002DF759 /* MinaOtpWhite.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,9 +73,10 @@
 		20FC650A211849D1002DF759 /* ShowTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTips.swift; sourceTree = "<group>"; };
 		20FC650C21185C7A002DF759 /* EditPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPopoverViewController.swift; sourceTree = "<group>"; };
 		20FC650E21194BE9002DF759 /* AddWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWindow.swift; sourceTree = "<group>"; };
-		20FC6510211A8B38002DF759 /* MinaOtp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MinaOtp.icns; sourceTree = "<group>"; };
 		20FC6512211A9B3B002DF759 /* StatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		20FC6514211AE33B002DF759 /* MinaOTP-MAC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MinaOTP-MAC.entitlements"; sourceTree = "<group>"; };
+		20FC6515211AEEC1002DF759 /* MinaOtpWhite.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MinaOtpWhite.icns; sourceTree = "<group>"; };
+		20FC6517211B017D002DF759 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +153,7 @@
 				20248BA721119AC10043D902 /* Tools.swift */,
 				20FC650A211849D1002DF759 /* ShowTips.swift */,
 				20776B0B2114323700C94441 /* MinaOTP-MAC-Bridging-Header.h */,
-				20FC6510211A8B38002DF759 /* MinaOtp.icns */,
+				20FC6515211AEEC1002DF759 /* MinaOtpWhite.icns */,
 				20FBA95821106EB20017BFC3 /* Assets.xcassets */,
 				20FBA95A21106EB20017BFC3 /* MainMenu.xib */,
 				20FBA95D21106EB20017BFC3 /* Info.plist */,
@@ -268,7 +269,6 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 20FBA94A21106EB10017BFC3;
@@ -289,8 +289,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				20FBA95921106EB20017BFC3 /* Assets.xcassets in Resources */,
-				20FC6511211A8B38002DF759 /* MinaOtp.icns in Resources */,
 				20FBA95C21106EB20017BFC3 /* MainMenu.xib in Resources */,
+				20FC6516211AEEC1002DF759 /* MinaOtpWhite.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +368,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				20FBA95B21106EB20017BFC3 /* Base */,
+				20FC6517211B017D002DF759 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -379,6 +380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -439,6 +441,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

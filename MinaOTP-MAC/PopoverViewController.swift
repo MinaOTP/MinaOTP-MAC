@@ -34,9 +34,9 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     override func awakeFromNib() {
     }
     struct OtpModel:Codable {
-        var otpauth:String
         var secret:String
         var issuer:String
+        var remark:String
     }
     lazy var addPopoverView : NSPopover = {
         let pop = NSPopover()
@@ -217,7 +217,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
                 var allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
 
                 for item in otpModelArray{
-                    let otp = Tools().totpStringFormat(otpauth: item.otpauth, issuer: item.issuer, secret: item.secret)
+                    let otp = Tools().totpStringFormat(remark: item.remark, issuer: item.issuer, secret: item.secret)
                     allItems.append(otp)
                 }
                 defaults.set(allItems, forKey: "MinaOtpMAC")
@@ -233,7 +233,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     @objc func exportButtonAction() {
         let savePanel = NSSavePanel()
         savePanel.title = "选择文件导出位置"
-        savePanel.nameFieldStringValue = "MinaOtp.json"
+        savePanel.nameFieldStringValue = "minaOTP.json"
         savePanel.canCreateDirectories = true
         savePanel.isExtensionHidden = false
         let i = savePanel.runModal()
@@ -280,6 +280,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
             (view as! CellView).identifier = NSUserInterfaceItemIdentifier(rawValue: "cellIdentifier");
         }
         let totpDic = Tools().totpDictionaryFormat(code: totpArray[row])
+        (view as! CellView).remarkTextField.stringValue = (totpDic["remark"] as? String)!
         (view as! CellView).issuerTextField.stringValue = (totpDic["issuer"] as? String)!
         (view as! CellView).codeTextField.stringValue = GeneratorTotp.generateOTP(forSecret: totpDic["secret"] as? String)
         return view;

@@ -13,6 +13,7 @@ class CellView: NSView {
         super.init(frame: frameRect)
         self.addSubview(self.codeTextField)
         self.addSubview(self.issuerTextField)
+        self.addSubview(self.remarkTextField)
         self.wantsLayer = true
         self.layer?.backgroundColor = NSColor.clear.cgColor
         self.layer?.addSublayer(self.lineLayer)
@@ -31,24 +32,25 @@ class CellView: NSView {
     }()
 
     lazy var issuerTextField: NSTextField = {
-        let lab = NSTextField.init(frame: CGRect(x: 2, y: 20, width: 198, height: 16))
+        let lab = NSTextField.init(frame: CGRect(x: 10, y: 10, width: 100, height: 12))
         lab.textColor = NSColor.orange
         lab.stringValue = ""
         lab.isBordered = false
         lab.isEditable = false
-        lab.backgroundColor = NSColor.clear
-        lab.font = NSFont.systemFont(ofSize: 14)
+//        lab.backgroundColor = NSColor.red
+        lab.font = NSFont.systemFont(ofSize: 10)
         return lab
     }()
 
-//    lazy var otpauthTextField: NSTextField = {
-//        let lab = NSTextField.init(frame: CGRect(x: 0, y: 20, width: 200, height: 20))
-//        lab.textColor = NSColor.orange
-//        lab.stringValue = "otpauthTextField"
-//        lab.isBordered = false
-//        lab.font = NSFont.systemFont(ofSize: 14)
-//        return lab
-//    }()
+    lazy var remarkTextField: NSTextField = {
+        let lab = NSTextField.init(frame: CGRect(x: 2, y: 24, width: 160, height: 20))
+        lab.textColor = NSColor.orange
+        lab.stringValue = ""
+        lab.isBordered = false
+//        lab.backgroundColor = NSColor.red
+        lab.font = NSFont.systemFont(ofSize: 14)
+        return lab
+    }()
     lazy var lineLayer: CALayer = {
         let line = CALayer()
         line.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: 1)

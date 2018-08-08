@@ -38,10 +38,10 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         self.contentView?.addSubview(cancleButton)
         self.contentView?.addSubview(saveButton)
         self.contentView?.addSubview(chooseButton)
-        self.contentView?.addSubview(self.otpauthTextField)
+        self.contentView?.addSubview(self.remarkTextField)
         self.contentView?.addSubview(self.issuerTextField)
         self.contentView?.addSubview(self.secretTextFiled)
-        self.contentView?.addSubview(self.otpauthTitleTextField)
+        self.contentView?.addSubview(self.remarkTitleTextField)
         self.contentView?.addSubview(self.issuerTitleTextField)
         self.contentView?.addSubview(self.secretTitleTextField)
 
@@ -53,13 +53,13 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         saveButton.action = #selector(self.saveButtonAction(button:))
         saveButton.isEnabled = false
     }
-    lazy var otpauthTitleTextField: NSTextField = {
-        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 270, width: 100, height: 18), textColor: textColor, text: "请输入otpauth:", font: 12)
+    lazy var remarkTitleTextField: NSTextField = {
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 270, width: 100, height: 18), textColor: textColor, text: "请输入remark:", font: 12)
         lab.isEditable = false
         lab.delegate = self
         return lab
     }()
-    lazy var otpauthTextField: NSTextField = {
+    lazy var remarkTextField: NSTextField = {
         let lab = Tools().generateTextField(frame: NSRect(x: 13, y: 230, width: 455, height: 40), textColor: textColor, text: "", font: 12)
         lab.delegate = self
         lab.isBordered = true
@@ -105,7 +105,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         return lab
     }()
     override func controlTextDidChange(_ obj: Notification) {
-        if self.otpauthTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
+        if self.remarkTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
             saveButton.isEnabled = false
         }else{
             print("可以输入了")
@@ -119,7 +119,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
     }
 
     @objc func saveButtonAction(button: NSButton) {
-        let otp = Tools().totpStringFormat(otpauth: self.otpauthTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
+        let otp = Tools().totpStringFormat(remark: self.remarkTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
 
         // 将数据保存到UserDefaults
         let defaults = UserDefaults.standard
@@ -164,7 +164,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         }
 
         let totpDic = Tools().totpDictionaryFormat(code: code)
-        otpauthTextField.stringValue = totpDic["otpauth"] as! String
+        remarkTextField.stringValue = totpDic["remark"] as! String
         issuerTextField.stringValue = totpDic["issuer"] as! String
         secretTextFiled.stringValue = totpDic["secret"] as! String
         saveButton.isEnabled = true

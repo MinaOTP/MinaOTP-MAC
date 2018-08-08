@@ -29,7 +29,7 @@ class AddPopoverViewController: NSViewController,NSTextFieldDelegate {
         self.view.addSubview(cancleButton)
         self.view.addSubview(saveButton)
         self.view.addSubview(chooseButton)
-        self.view.addSubview(self.otpauthTextField)
+        self.view.addSubview(self.remarkTextField)
         self.view.addSubview(self.issuerTextField)
         self.view.addSubview(self.secretTextFiled)
 
@@ -42,9 +42,9 @@ class AddPopoverViewController: NSViewController,NSTextFieldDelegate {
 
         saveButton.isEnabled = false
     }
-    lazy var otpauthTextField: NSTextField = {
+    lazy var remarkTextField: NSTextField = {
         let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 170, width: 180, height: 30), textColor: NSColor.red, text: "", font: 12)
-        lab.placeholderString = "请输入otpauth"
+        lab.placeholderString = "请输入remark"
         lab.delegate = self
         return lab
     }()
@@ -62,7 +62,7 @@ class AddPopoverViewController: NSViewController,NSTextFieldDelegate {
         return lab
     }()
     override func controlTextDidChange(_ obj: Notification) {
-        if self.otpauthTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
+        if self.remarkTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
             saveButton.isEnabled = false
         }else{
             print("可以输入了")
@@ -76,7 +76,7 @@ class AddPopoverViewController: NSViewController,NSTextFieldDelegate {
 
     @objc func saveButtonAction(button: NSButton) {
         print("saveButtonAction")
-        let otp = Tools().totpStringFormat(otpauth: self.otpauthTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
+        let otp = Tools().totpStringFormat(remark: self.remarkTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
 
         // 将数据保存到UserDefaults
         let defaults = UserDefaults.standard

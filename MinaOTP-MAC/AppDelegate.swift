@@ -62,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     func rightMouseDownAction() {
         let menu = NSMenu.init()
         menu.delegate = self
+        menu.addItem(withTitle: "  下载导入格式文件  ", action: #selector(exportDemoAction), keyEquivalent: "")
         menu.addItem(withTitle: "  帮助  ", action: #selector(helpAction), keyEquivalent: "")
         menu.addItem(withTitle: "  退出  ", action: #selector(exitAction), keyEquivalent: "")
         statusItem.popUpMenu(menu)
@@ -71,6 +72,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     }
     @objc func exitAction() {
         NSApp.terminate(nil)
+    }
+    @objc func exportDemoAction() {
+        let savePanel = NSSavePanel()
+        savePanel.title = "选择文件导出位置"
+        savePanel.nameFieldStringValue = "minaOTP_example.json"
+        savePanel.canCreateDirectories = true
+        savePanel.isExtensionHidden = false
+        let i = savePanel.runModal()
+        if i == NSApplication.ModalResponse.OK {
+
+            // 将数据保存到UserDefaults
+            let temArray = [["remark":"备注0", "secret":"密钥0", "issuer":"发行者0"], ["remark":"备注1", "secret":"密钥1", "issuer":"发行者1"]]
+            let temJsonData = try! JSONSerialization.data(withJSONObject: temArray, options: .prettyPrinted)
+            let temJsonStr = String.init(data: temJsonData, encoding: .utf8)
+            do {
+                try temJsonStr?.write(to: savePanel.url!, atomically: true, encoding: .utf8)
+                Tools().showAlert(message: "导出成功")
+            } catch {
+                Tools().showAlert(message: "导出失败,请重新尝试")
+            }
+        }
     }
     func popoverWillShow(_ notification: Notification) {
         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"reload"])

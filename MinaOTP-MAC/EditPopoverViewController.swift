@@ -25,7 +25,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         let defaults = UserDefaults.standard
         var allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
         let totpDic = Tools().totpDictionaryFormat(code: allItems[editRow])
-        otpauthTextField.stringValue = (totpDic["otpauth"] as? String)!
+        remarkTextField.stringValue = (totpDic["remark"] as? String)!
         issuerTextField.stringValue = (totpDic["issuer"] as? String)!
         secretTextFiled.stringValue = (totpDic["secret"] as? String)!
     }
@@ -35,8 +35,8 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
     private func config() {
         self.view.addSubview(cancleButton)
         self.view.addSubview(saveButton)
-        self.view.addSubview(self.otpauthTitleTextField)
-        self.view.addSubview(self.otpauthTextField)
+        self.view.addSubview(self.remarkTitleTextField)
+        self.view.addSubview(self.remarkTextField)
         self.view.addSubview(self.issuerTitleTextField)
         self.view.addSubview(self.issuerTextField)
         self.view.addSubview(self.secretTitleTextField)
@@ -49,13 +49,13 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
 
         saveButton.isEnabled = false
     }
-    lazy var otpauthTitleTextField: NSTextField = {
-        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 220, width: 100, height: 18), textColor: textColor, text: "请输入otpauth:", font: 10)
+    lazy var remarkTitleTextField: NSTextField = {
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 220, width: 100, height: 18), textColor: textColor, text: "请输入remark:", font: 10)
         lab.isEditable = false
         lab.delegate = self
         return lab
     }()
-    lazy var otpauthTextField: NSTextField = {
+    lazy var remarkTextField: NSTextField = {
         let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 185, width: 180, height: 35), textColor: textColor, text: "", font: 12)
         lab.delegate = self
         lab.isBordered = true
@@ -101,7 +101,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         return lab
     }()
     override func controlTextDidChange(_ obj: Notification) {
-        if self.otpauthTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
+        if self.remarkTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
             saveButton.isEnabled = false
         }else{
             print("可以输入了")
@@ -116,7 +116,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
 
     @objc func saveButtonAction(button: NSButton) {
         print("saveButtonAction")
-        let otp = Tools().totpStringFormat(otpauth: self.otpauthTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
+        let otp = Tools().totpStringFormat(remark: self.remarkTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
 
         // 将数据保存到UserDefaults
         let defaults = UserDefaults.standard

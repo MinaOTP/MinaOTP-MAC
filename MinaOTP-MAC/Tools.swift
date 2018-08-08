@@ -80,12 +80,12 @@ class Tools: NSObject {
             replaceStr = replaceStr.replacingOccurrences(of: word, with: "#break_words#")
         }
         let resultArray = replaceStr.components(separatedBy: "#break_words#")
-        let resultDic = ["otpauth": resultArray[1], "secret": resultArray[2], "issuer": resultArray[3]]
+        let resultDic = ["remark": resultArray[1], "secret": resultArray[2], "issuer": resultArray[3]]
         return resultDic
     }
 
-    func totpStringFormat(otpauth: String, issuer:String, secret:String) -> String {
-        return "otpauth://totp/\(otpauth)?secret=\(secret)&issuer=\(issuer)"
+    func totpStringFormat(remark: String, issuer:String, secret:String) -> String {
+        return "otpauth://totp/\(remark)?secret=\(secret)&issuer=\(issuer)"
     }
 
 }
