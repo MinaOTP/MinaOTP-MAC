@@ -54,13 +54,15 @@ class ProgressView: NSView {
         return path
     }()
     func setProgress(value: CGFloat) {
-        if value>0.85 {
-            self.topShapeLayer.strokeColor = NSColor.red.cgColor
-
-        }else{
-            self.topShapeLayer.strokeColor = NSColor.green.cgColor
-        }
+//        if value>0.85 {
+//            self.topShapeLayer.strokeColor = NSColor.red.cgColor
+//
+//        }else{
+//            self.topShapeLayer.strokeColor = NSColor.green.cgColor
+//        }
         self.topShapeLayer.strokeEnd = value
+        self.topShapeLayer.strokeColor = NSColor.systemBlue.cgColor
+//        self.topShapeLayer.strokeColor = NSColor.init(red: value, green: (1.0-value)*3, blue: 0, alpha: 1).cgColor
     }
 
     

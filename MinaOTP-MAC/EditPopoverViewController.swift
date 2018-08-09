@@ -13,7 +13,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
     let cancleButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 40, height: 20), title: "取消")
     let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 148, y: 12, width: 40, height: 20), title: "保存")
     var editRow:Int = -1
-    let textColor = NSColor.init(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+    let textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
 
     override func loadView() {
         self.view = NSView(frame: CGRect(x: 0, y: 0, width: 200, height: 250))
@@ -63,7 +63,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         lab.isBezeled = true
         lab.bezelStyle = .squareBezel
         lab.layer?.borderWidth = 1
-        lab.layer?.borderColor = NSColor.orange.cgColor
+        lab.layer?.borderColor = NSColor.systemBlue.cgColor
         return lab
     }()
     lazy var issuerTitleTextField: NSTextField = {
@@ -80,7 +80,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         lab.isBezeled = true
         lab.bezelStyle = .squareBezel
         lab.layer?.borderWidth = 1
-        lab.layer?.borderColor = NSColor.orange.cgColor
+        lab.layer?.borderColor = NSColor.systemBlue.cgColor
         return lab
     }()
     lazy var secretTitleTextField: NSTextField = {
@@ -97,7 +97,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         lab.isBezeled = true
         lab.bezelStyle = .squareBezel
         lab.layer?.borderWidth = 1
-        lab.layer?.borderColor = NSColor.orange.cgColor
+        lab.layer?.borderColor = NSColor.systemBlue.cgColor
         return lab
     }()
     override func controlTextDidChange(_ obj: Notification) {

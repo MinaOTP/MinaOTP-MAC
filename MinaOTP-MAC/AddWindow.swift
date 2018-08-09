@@ -13,7 +13,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
     let cancleButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 40, height: 20), title: "取消")
     let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 428, y: 12, width: 40, height: 20), title: "保存")
     let chooseButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 368, y: 300, width: 100, height: 20), title: "选取二维码图片")
-    let textColor = NSColor.init(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+    let textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
 
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: style, backing: backingStoreType, defer: flag)
@@ -31,8 +31,9 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         self.standardWindowButton(.zoomButton)?.isHidden = true
 
         self.isOpaque = false
+        self.backgroundColor = NSColor.clear
         self.titlebarAppearsTransparent = true
-        self.backgroundColor = NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 1)
+        self.backgroundColor = NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.6)
         self.isMovableByWindowBackground = true
 
         self.contentView?.addSubview(cancleButton)
@@ -67,7 +68,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         lab.isBezeled = true
         lab.bezelStyle = .squareBezel
         lab.layer?.borderWidth = 1
-        lab.layer?.borderColor = NSColor.orange.cgColor
+        lab.layer?.borderColor = NSColor.systemBlue.cgColor
         return lab
     }()
     lazy var issuerTitleTextField: NSTextField = {
@@ -84,7 +85,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         lab.isBezeled = true
         lab.bezelStyle = .squareBezel
         lab.layer?.borderWidth = 1
-        lab.layer?.borderColor = NSColor.orange.cgColor
+        lab.layer?.borderColor = NSColor.systemBlue.cgColor
         return lab
     }()
     lazy var secretTitleTextField: NSTextField = {
@@ -101,7 +102,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         lab.isBezeled = true
         lab.bezelStyle = .squareBezel
         lab.layer?.borderWidth = 1
-        lab.layer?.borderColor = NSColor.orange.cgColor
+        lab.layer?.borderColor = NSColor.systemBlue.cgColor
         return lab
     }()
     override func controlTextDidChange(_ obj: Notification) {

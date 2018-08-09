@@ -16,13 +16,13 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     let addButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 240, y: 365, width: 40, height: 20), title: "添加")
     var totpArray = [String]()
     var oldTimeStamp = 0
-    let kCellHeight = CGFloat(50)
+    let kCellHeight = CGFloat(60)
     var clickedRow: Int = -1
 
     override func loadView() {
         self.view = NSView(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
         self.view.wantsLayer = true
-        self.view.layer?.backgroundColor = NSColor.white.cgColor
+        self.view.layer?.backgroundColor = NSColor.clear.cgColor
     }
 
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     lazy var addPopoverView : NSPopover = {
         let pop = NSPopover()
         pop.behavior = NSPopover.Behavior(rawValue: 1)!
-        pop.appearance = NSAppearance.init(named: .aqua)
+        pop.appearance = NSAppearance.init(named: .vibrantLight)
         pop.contentViewController = AddPopoverViewController()
         pop.delegate = self
         return pop
@@ -49,7 +49,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     lazy var editPopoverView : NSPopover = {
         let pop = NSPopover()
         pop.behavior = NSPopover.Behavior(rawValue: 1)!
-        pop.appearance = NSAppearance.init(named: .aqua)
+        pop.appearance = NSAppearance.init(named: .vibrantLight)
         pop.delegate = self
         return pop
     }()
@@ -57,9 +57,8 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         let tab = NSTableView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         tab.delegate = self;
         tab.dataSource = self;
-        tab.backgroundColor = NSColor.white
-        tab.usesAlternatingRowBackgroundColors = false
         tab.enclosingScrollView?.drawsBackground = false
+        tab.backgroundColor = NSColor.clear
         tab.headerView = NSTableHeaderView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         let column1 = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column1"))
         column1.width = 300
@@ -75,8 +74,13 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }()
     lazy var bgScrollView: NSScrollView = {
         let scrollView = NSScrollView.init(frame: CGRect(x: 0, y: 0, width: 300, height: 350))
+//        scrollView.wantsLayer = true
+//        scrollView.layer?.backgroundColor = NSColor.clear.cgColor
+//        scrollView.contentView.wantsLayer = true
+//        scrollView.contentView.layer?.backgroundColor = NSColor.clear.cgColor
+        scrollView.contentView.backgroundColor = NSColor.clear
         scrollView.documentView = totpTableView
-
+        totpTableView.enclosingScrollView?.drawsBackground = false
         return scrollView
     }()
     lazy var progressView:ProgressView = {
@@ -283,6 +287,8 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         (view as! CellView).remarkTextField.stringValue = (totpDic["remark"] as? String)!
         (view as! CellView).issuerTextField.stringValue = (totpDic["issuer"] as? String)!
         (view as! CellView).codeTextField.stringValue = GeneratorTotp.generateOTP(forSecret: totpDic["secret"] as? String)
+        (view as! CellView).hotKeyTextField.stringValue = "⌘\(row)"
+
         return view;
     }
 

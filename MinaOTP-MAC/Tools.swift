@@ -14,11 +14,12 @@ class CustomFlatButton{
     button.title = title
     button.font = NSFont.systemFont(ofSize: 12)
     button.setButtonType(.momentaryChange)
-    button.textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.7)
-    button.cornerRadius = 10
-    button.borderColor = NSColor.orange
+    button.textColor = NSColor.white
+    button.cornerRadius = 4
+    button.borderColor = NSColor.systemBlue
     button.borderWidth = 1
-    button.activeBorderColor = NSColor.white
+    button.activeBorderColor = NSColor.systemBlue
+    button.buttonColor = NSColor.systemBlue
     button.focusRingType = .none
 
     return button

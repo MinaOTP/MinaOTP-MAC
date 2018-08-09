@@ -25,15 +25,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
             button.action = #selector(AppDelegate.mouseDownAction)
             button.sendAction(on: [.leftMouseDown, .rightMouseDown])
             button.target = self
+            button.toolTip = "魔镜魔镜,老子是不是最帅的人?"
         }
-        statusItem.highlightMode = false
-//        let statusItemView = StatusItemView.init(frame: NSZeroRect)
-//        statusItemView.statusItem = statusItem
-//        statusItemView.delegate = self
-//        statusItem.view = statusItemView
+        statusItem.highlightMode = true
 
         popover.behavior = NSPopover.Behavior(rawValue: 1)!
-        popover.appearance = NSAppearance.init(named: .aqua)
+//        popover.appearance = NSAppearance.init(named: .vibrantDark)
+        popover.appearance = NSAppearance.init(named: .vibrantLight)
         popover.contentViewController = popoverVC
         popover.delegate = self
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { (event) in
@@ -47,11 +45,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         if event?.type == .leftMouseDown{
             print("左边的")
             leftMouseDownAction()
-            statusItem.button?.state = NSControl.StateValue(rawValue: 0)
+            statusItem.button?.state = NSControl.StateValue.off
         }else if event?.type == .rightMouseDown{
             print("右边的")
             rightMouseDownAction()
-            statusItem.button?.state = NSControl.StateValue(rawValue: 0)
+            statusItem.button?.state = NSControl.StateValue.mixed
         }else{
             print("谁点的")
         }
@@ -68,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         statusItem.popUpMenu(menu)
     }
     @objc func helpAction() {
-        NSWorkspace.shared.open(NSURL.init(string: "https://www.baidu.com")! as URL)
+        NSWorkspace.shared.open(NSURL.init(string: "https://github.com/wjmwjmwb/MinaOTP-MAC")! as URL)
     }
     @objc func exitAction() {
         NSApp.terminate(nil)
