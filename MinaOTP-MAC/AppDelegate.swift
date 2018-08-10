@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Carbon
 
 @NSApplicationMain
 
@@ -19,8 +20,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
 
+//        addLocalHotKey(keyCode: UInt32(kVK_ANSI_0))
+
         if let button = statusItem.button{
-            button.image = NSImage.init(named: NSImage.Name(rawValue: "statusIcon"))
+            button.image = NSImage.init(named: NSImage.Name(rawValue: "close"))
             button.image?.size = NSSize(width: 20, height: 20)
             button.action = #selector(AppDelegate.mouseDownAction)
             button.sendAction(on: [.leftMouseDown, .rightMouseDown])
@@ -30,15 +33,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         statusItem.highlightMode = true
 
         popover.behavior = NSPopover.Behavior(rawValue: 1)!
-//        popover.appearance = NSAppearance.init(named: .vibrantDark)
         popover.appearance = NSAppearance.init(named: .vibrantLight)
         popover.contentViewController = popoverVC
         popover.delegate = self
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { (event) in
-            if self.popover.isShown {
-                self.popover.close()
+            if event.type == .leftMouseDown || event.type == .rightMouseDown{
+                if self.popover.isShown {
+                    self.popover.close()
+                }
             }
         }
+        addHotKey()
+
     }
     @objc func mouseDownAction() {
         let event = NSApp.currentEvent
@@ -94,11 +100,41 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     }
     func popoverWillShow(_ notification: Notification) {
         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"reload"])
+        statusItem.button?.image = NSImage.init(named: NSImage.Name(rawValue: "open"))
+        statusItem.button?.image?.size = NSSize(width: 20, height: 20)
+
     }
     func popoverDidClose(_ notification: Notification) {
         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"close"])
+        statusItem.button?.image = NSImage.init(named: NSImage.Name(rawValue: "close"))
+        statusItem.button?.image?.size = NSSize(width: 20, height: 20)
     }
 
+    func addHotKey() {
+
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
+
+
+            return event
+        }
+
+    }
+    func removeHotKey() {
+    }
+
+
+
+    func addLocalHotKey(keyCode: UInt32) {
+        var ref = EventHotKeyRef.init(bitPattern: 0)
+        var keyId = EventHotKeyID.init()
+        var eventType = EventTypeSpec.init()
+        eventType.eventClass = OSType(kEventClassKeyboard)
+        eventType.eventKind = UInt32(kEventHotKeyPressed)
+//        InstallEventHandler(<#T##inTarget: EventTargetRef!##EventTargetRef!#>, <#T##inHandler: EventHandlerUPP!##EventHandlerUPP!##(EventHandlerCallRef?, EventRef?, UnsafeMutableRawPointer?) -> OSStatus#>, <#T##inNumTypes: Int##Int#>, <#T##inList: UnsafePointer<EventTypeSpec>!##UnsafePointer<EventTypeSpec>!#>, <#T##inUserData: UnsafeMutableRawPointer!##UnsafeMutableRawPointer!#>, <#T##outRef: UnsafeMutablePointer<EventHandlerRef?>!##UnsafeMutablePointer<EventHandlerRef?>!#>)
+        keyId.signature = UInt32("123456")!
+        keyId.id = keyCode
+        RegisterEventHotKey(keyCode, 0, keyId, GetApplicationEventTarget(), 0, &ref)
+    }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application

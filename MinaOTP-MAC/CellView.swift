@@ -14,7 +14,7 @@ class CellView: NSView {
         self.addSubview(self.codeTextField)
         self.addSubview(self.issuerTextField)
         self.addSubview(self.remarkTextField)
-        self.addSubview(self.hotKeyTextField)
+//        self.addSubview(self.hotKeyTextField)
         self.wantsLayer = true
         self.layer?.backgroundColor = NSColor.clear.cgColor
         self.layer?.addSublayer(self.lineLayer)
@@ -22,7 +22,7 @@ class CellView: NSView {
     }
 
     lazy var codeTextField: NSTextField = {
-        let lab = NSTextField.init(frame: CGRect(x: 195, y: 30, width: 90, height: 20))
+        let lab = NSTextField.init(frame: CGRect(x: 198, y: 30, width: 90, height: 20))
         lab.textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
         lab.stringValue = ""
         lab.isBordered = false
@@ -57,7 +57,7 @@ class CellView: NSView {
         return lab
     }()
     lazy var hotKeyTextField: NSTextField = {
-        let lab = NSTextField.init(frame: CGRect(x: 260, y: 10, width: 25, height: 12))
+        let lab = NSTextField.init(frame: CGRect(x: 263, y: 10, width: 25, height: 12))
         lab.textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
         lab.stringValue = ""
         lab.isBordered = false

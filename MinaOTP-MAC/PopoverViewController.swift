@@ -11,9 +11,9 @@ import Cocoa
 class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, NSPopoverDelegate{
 
 
-    let importButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 12, y: 365, width: 40, height: 20), title: "导入")
-    let exportButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 64, y: 365, width: 40, height: 20), title: "导出")
-    let addButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 240, y: 365, width: 40, height: 20), title: "添加")
+    let importButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 12, y: 365, width: 48, height: 24), title: "导入")
+    let exportButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 72, y: 365, width: 48, height: 24), title: "导出")
+    let addButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 240, y: 365, width: 48, height: 24), title: "添加")
     var totpArray = [String]()
     var oldTimeStamp = 0
     let kCellHeight = CGFloat(60)
@@ -74,10 +74,6 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }()
     lazy var bgScrollView: NSScrollView = {
         let scrollView = NSScrollView.init(frame: CGRect(x: 0, y: 0, width: 300, height: 350))
-//        scrollView.wantsLayer = true
-//        scrollView.layer?.backgroundColor = NSColor.clear.cgColor
-//        scrollView.contentView.wantsLayer = true
-//        scrollView.contentView.layer?.backgroundColor = NSColor.clear.cgColor
         scrollView.contentView.backgroundColor = NSColor.clear
         scrollView.documentView = totpTableView
         totpTableView.enclosingScrollView?.drawsBackground = false
@@ -287,7 +283,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         (view as! CellView).remarkTextField.stringValue = (totpDic["remark"] as? String)!
         (view as! CellView).issuerTextField.stringValue = (totpDic["issuer"] as? String)!
         (view as! CellView).codeTextField.stringValue = GeneratorTotp.generateOTP(forSecret: totpDic["secret"] as? String)
-        (view as! CellView).hotKeyTextField.stringValue = "⌘\(row)"
+//        (view as! CellView).hotKeyTextField.stringValue = "⌘\(row)"
 
         return view;
     }

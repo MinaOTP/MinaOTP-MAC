@@ -16,7 +16,7 @@ class StatusItemView: NSControl {
     override init(frame frameRect: NSRect) {
         super.init(frame: NSZeroRect)
         self.wantsLayer = true
-        self.layer?.backgroundColor = NSColor.green.cgColor
+        self.layer?.backgroundColor = NSColor.clear.cgColor
     }
 
     required init?(coder decoder: NSCoder) {

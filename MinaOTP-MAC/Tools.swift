@@ -12,19 +12,49 @@ class CustomFlatButton{
     func customFlatButton(frame: CGRect, title: String) -> FlatButton {
     let button = FlatButton.init(frame: frame)
     button.title = title
-    button.font = NSFont.systemFont(ofSize: 12)
+    button.font = NSFont.boldSystemFont(ofSize: 12)
     button.setButtonType(.momentaryChange)
     button.textColor = NSColor.white
     button.cornerRadius = 4
-    button.borderColor = NSColor.systemBlue
+    button.borderColor = NSColor.mainColor
     button.borderWidth = 1
-    button.activeBorderColor = NSColor.systemBlue
-    button.buttonColor = NSColor.systemBlue
+    button.activeBorderColor = NSColor.mainColor
+    button.buttonColor = NSColor.mainColor
     button.focusRingType = .none
 
     return button
     }
 }
+
+extension NSColor {
+
+    class var mainColor: NSColor {
+        let color = NSColor.systemBlue
+//        let color = NSColor.init(red: 0.00, green: 0.56, blue: 0.98, alpha: 1.00)
+        return color
+    }
+
+    convenience init(hex: String) {
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 0
+
+        var rgbValue: UInt64 = 0
+
+        scanner.scanHexInt64(&rgbValue)
+
+        let r = (rgbValue & 0xff0000) >> 16
+        let g = (rgbValue & 0xff00) >> 8
+        let b = rgbValue & 0xff
+
+        self.init(
+            red: CGFloat(r) / 0xff,
+            green: CGFloat(g) / 0xff,
+            blue: CGFloat(b) / 0xff, alpha: 1
+        )
+    }
+}
+
+
 
 extension NSBezierPath {
 
