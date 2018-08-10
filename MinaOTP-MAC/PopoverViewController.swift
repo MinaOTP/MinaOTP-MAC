@@ -28,8 +28,10 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.config()
+
         NotificationCenter.default.addObserver(self, selector: #selector(notificationAction), name: NSNotification.Name(rawValue:"reloadData"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(notificationAction), name: NSNotification.Name(rawValue:"addData"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(didScroll), name: NSView.boundsDidChangeNotification, object: totpTableView.enclosingScrollView?.contentView)
     }
     override func awakeFromNib() {
     }
@@ -69,7 +71,6 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         menu.delegate = self
         tab.menu = menu
         tab.draggingDestinationFeedbackStyle = .gap
-
         return tab
     }()
     lazy var bgScrollView: NSScrollView = {
@@ -157,6 +158,8 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
             self.totpTableView.scrollRowToVisible(totpArray.count-1)
         }
     }
+
+
     func popoverWillClose(_ notification: Notification) {
         print("popoverWillClose")
         startTimer()

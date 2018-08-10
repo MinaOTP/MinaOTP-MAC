@@ -45,6 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         }
         addHotKey()
 
+
     }
     @objc func mouseDownAction() {
         let event = NSApp.currentEvent
@@ -112,28 +113,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
 
     func addHotKey() {
 
-        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
+        guard let keyCombo3 = KeyCombo(doubledCocoaModifiers: .command) else { return }
+        let hotKey3 = HotKey(identifier: "CommandDoubleTap",
+                             keyCombo: keyCombo3,
+                             target: self,
+                             action: #selector(AppDelegate.tappedDoubleCommandKey))
+        hotKey3.register()
 
-
-            return event
-        }
-
+        
+    }
+    @objc func tappedDoubleCommandKey() {
+        print("1231231")
+        leftMouseDownAction()
     }
     func removeHotKey() {
-    }
 
-
-
-    func addLocalHotKey(keyCode: UInt32) {
-        var ref = EventHotKeyRef.init(bitPattern: 0)
-        var keyId = EventHotKeyID.init()
-        var eventType = EventTypeSpec.init()
-        eventType.eventClass = OSType(kEventClassKeyboard)
-        eventType.eventKind = UInt32(kEventHotKeyPressed)
-//        InstallEventHandler(<#T##inTarget: EventTargetRef!##EventTargetRef!#>, <#T##inHandler: EventHandlerUPP!##EventHandlerUPP!##(EventHandlerCallRef?, EventRef?, UnsafeMutableRawPointer?) -> OSStatus#>, <#T##inNumTypes: Int##Int#>, <#T##inList: UnsafePointer<EventTypeSpec>!##UnsafePointer<EventTypeSpec>!#>, <#T##inUserData: UnsafeMutableRawPointer!##UnsafeMutableRawPointer!#>, <#T##outRef: UnsafeMutablePointer<EventHandlerRef?>!##UnsafeMutablePointer<EventHandlerRef?>!#>)
-        keyId.signature = UInt32("123456")!
-        keyId.id = keyCode
-        RegisterEventHotKey(keyCode, 0, keyId, GetApplicationEventTarget(), 0, &ref)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

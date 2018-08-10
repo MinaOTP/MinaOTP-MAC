@@ -15,6 +15,12 @@
 		20776B0D2114597800C94441 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20776B0C2114597700C94441 /* ProgressView.swift */; };
 		20887FE6211421DD000ACF00 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20887FE5211421DD000ACF00 /* CellView.swift */; };
 		20887FE8211426BA000ACF00 /* AddPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20887FE7211426BA000ACF00 /* AddPopoverViewController.swift */; };
+		20A17A69211D90360052792D /* HotKeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A17A62211D90350052792D /* HotKeyCenter.swift */; };
+		20A17A6A211D90360052792D /* KeyCodeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A17A63211D90350052792D /* KeyCodeTransformer.swift */; };
+		20A17A6B211D90360052792D /* KeyTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A17A64211D90350052792D /* KeyTransformer.swift */; };
+		20A17A6C211D90360052792D /* KeyCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A17A65211D90350052792D /* KeyCombo.swift */; };
+		20A17A6D211D90360052792D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20A17A66211D90350052792D /* Info.plist */; };
+		20A17A6E211D90360052792D /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A17A68211D90350052792D /* HotKey.swift */; };
 		20FBA95721106EB10017BFC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBA95621106EB10017BFC3 /* AppDelegate.swift */; };
 		20FBA95921106EB20017BFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FBA95821106EB20017BFC3 /* Assets.xcassets */; };
 		20FBA95C21106EB20017BFC3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FBA95A21106EB20017BFC3 /* MainMenu.xib */; };
@@ -56,6 +62,13 @@
 		20776B0C2114597700C94441 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		20887FE5211421DD000ACF00 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		20887FE7211426BA000ACF00 /* AddPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPopoverViewController.swift; sourceTree = "<group>"; };
+		20A17A62211D90350052792D /* HotKeyCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyCenter.swift; sourceTree = "<group>"; };
+		20A17A63211D90350052792D /* KeyCodeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCodeTransformer.swift; sourceTree = "<group>"; };
+		20A17A64211D90350052792D /* KeyTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTransformer.swift; sourceTree = "<group>"; };
+		20A17A65211D90350052792D /* KeyCombo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCombo.swift; sourceTree = "<group>"; };
+		20A17A66211D90350052792D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20A17A67211D90350052792D /* Magnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Magnet.h; sourceTree = "<group>"; };
+		20A17A68211D90350052792D /* HotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKey.swift; sourceTree = "<group>"; };
 		20FBA95321106EB10017BFC3 /* MinaOTP-MAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MinaOTP-MAC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FBA95621106EB10017BFC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20FBA95821106EB20017BFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +126,20 @@
 			path = OTPGenerator;
 			sourceTree = "<group>";
 		};
+		20A17A61211D90350052792D /* Magnet */ = {
+			isa = PBXGroup;
+			children = (
+				20A17A62211D90350052792D /* HotKeyCenter.swift */,
+				20A17A63211D90350052792D /* KeyCodeTransformer.swift */,
+				20A17A64211D90350052792D /* KeyTransformer.swift */,
+				20A17A65211D90350052792D /* KeyCombo.swift */,
+				20A17A66211D90350052792D /* Info.plist */,
+				20A17A67211D90350052792D /* Magnet.h */,
+				20A17A68211D90350052792D /* HotKey.swift */,
+			);
+			path = Magnet;
+			sourceTree = "<group>";
+		};
 		20FBA94A21106EB10017BFC3 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +163,7 @@
 		20FBA95521106EB10017BFC3 /* MinaOTP-MAC */ = {
 			isa = PBXGroup;
 			children = (
+				20A17A61211D90350052792D /* Magnet */,
 				20FC6514211AE33B002DF759 /* MinaOTP-MAC.entitlements */,
 				20776B042114318B00C94441 /* OTPGenerator */,
 				20FBA95621106EB10017BFC3 /* AppDelegate.swift */,
@@ -287,6 +315,7 @@
 			files = (
 				20FBA95921106EB20017BFC3 /* Assets.xcassets in Resources */,
 				20FBA95C21106EB20017BFC3 /* MainMenu.xib in Resources */,
+				20A17A6D211D90360052792D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,15 +343,20 @@
 				20887FE8211426BA000ACF00 /* AddPopoverViewController.swift in Sources */,
 				20248BA6211195850043D902 /* FlatButton.swift in Sources */,
 				20887FE6211421DD000ACF00 /* CellView.swift in Sources */,
+				20A17A6E211D90360052792D /* HotKey.swift in Sources */,
+				20A17A69211D90360052792D /* HotKeyCenter.swift in Sources */,
+				20A17A6C211D90360052792D /* KeyCombo.swift in Sources */,
 				20FC6513211A9B3B002DF759 /* StatusItemView.swift in Sources */,
 				20248BA421117A900043D902 /* PopoverViewController.swift in Sources */,
 				20FC650B211849D1002DF759 /* ShowTips.swift in Sources */,
 				20FBA95721106EB10017BFC3 /* AppDelegate.swift in Sources */,
 				20FC650D21185C7A002DF759 /* EditPopoverViewController.swift in Sources */,
 				20776B092114318B00C94441 /* GeneratorTotp.m in Sources */,
+				20A17A6A211D90360052792D /* KeyCodeTransformer.swift in Sources */,
 				20FC65092117F84D002DF759 /* CSTableRowView.swift in Sources */,
 				20248BA821119AC10043D902 /* Tools.swift in Sources */,
 				20776B0A2114318B00C94441 /* Base32Addition.m in Sources */,
+				20A17A6B211D90360052792D /* KeyTransformer.swift in Sources */,
 				20776B0D2114597800C94441 /* ProgressView.swift in Sources */,
 				20FC650F21194BE9002DF759 /* AddWindow.swift in Sources */,
 			);
