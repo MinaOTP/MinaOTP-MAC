@@ -65,10 +65,10 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         tab.addTableColumn(column1)
         tab.target = self
         tab.doubleAction = #selector(self.tableViewDoubleClick)
-
         let menu = NSMenu()
         menu.delegate = self
         tab.menu = menu
+        tab.draggingDestinationFeedbackStyle = .gap
 
         return tab
     }()
@@ -115,6 +115,9 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         importButton.action = #selector(self.importButtonAction)
         exportButton.action = #selector(self.exportButtonAction)
         addButton.action = #selector(self.addButtonAction(button:))
+
+
+        totpTableView.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
     }
 
     func reloadData() {
@@ -130,6 +133,8 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
             totpTableView.reloadData()
             oldTimeStamp = Int(Date().timeIntervalSince1970)/30
             self.timer.fireDate = Date.distantPast
+        }else{
+            self.progressView.setProgress(value: 0.00)
         }
     }
     func stopTimer() {
@@ -297,9 +302,66 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     func tableView(_ tableView: NSTableView, shouldEdit tableColumn: NSTableColumn?, row: Int) -> Bool {
         return true
     }
+//
+//    func tableView(_ tableView: NSTableView, didDrag tableColumn: NSTableColumn) {
+//        print("拖动")
+//    }
 
-    func tableView(_ tableView: NSTableView, didDrag tableColumn: NSTableColumn) {
-        print("拖动")
+    func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool {
+        let data = NSKeyedArchiver.archivedData(withRootObject: rowIndexes)
+        pboard.declareTypes([NSPasteboard.PasteboardType.string], owner: self)
+        pboard.setData(data, forType: NSPasteboard.PasteboardType.string)
+        return true
+    }
+    func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
+        pboard.declareTypes([NSPasteboard.PasteboardType.string], owner: self)
+        pboard.setString("currencyCode", forType: NSPasteboard.PasteboardType.string)
+        return true
     }
 
+    func tableView(_ tableView: NSTableView, didDrag tableColumn: NSTableColumn) {
+        print("asasasdad")
+    }
+    func tableView(_ tableView: NSTableView, draggingSession session: NSDraggingSession, willBeginAt screenPoint: NSPoint, forRowIndexes rowIndexes: IndexSet) {
+        stopTimer()
+        print("开始拖动")
+    }
+    func tableView(_ tableView: NSTableView, updateDraggingItemsForDrag draggingInfo: NSDraggingInfo) {
+        print("拖动结束")
+    }
+    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
+
+        if dropOperation == .above {
+            print("插入")
+            return .move
+        }
+        return []
+    }
+    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
+
+        if info.draggingSource() as! NSTableView == totpTableView{
+            let data = info.draggingPasteboard().data(forType: NSPasteboard.PasteboardType.string)
+            let rowIndexes:NSIndexSet = NSKeyedUnarchiver.unarchiveObject(with: data!) as! NSIndexSet
+
+            if rowIndexes.firstIndex == row{
+                totpTableView.reloadData()
+                startTimer()
+                return true
+            }
+            let value:String = totpArray[rowIndexes.firstIndex]
+            totpArray.remove(at: rowIndexes.firstIndex)
+            if rowIndexes.firstIndex < row{
+                totpArray.insert(value, at: row-1)
+            }else{
+                totpArray.insert(value, at: row)
+            }
+            let defaults = UserDefaults.standard
+            defaults.set(totpArray, forKey: "MinaOtpMAC")
+            totpTableView.reloadData()
+            startTimer()
+            return true
+        }
+        return false
+
+    }
 }
