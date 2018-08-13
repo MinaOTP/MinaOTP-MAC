@@ -33,7 +33,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         self.isOpaque = false
         self.backgroundColor = NSColor.clear
         self.titlebarAppearsTransparent = true
-        self.backgroundColor = NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.6)
+        self.backgroundColor = NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.9)
         self.isMovableByWindowBackground = true
 
         self.contentView?.addSubview(cancleButton)
