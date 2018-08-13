@@ -28,9 +28,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
             button.action = #selector(AppDelegate.mouseDownAction)
             button.sendAction(on: [.leftMouseDown, .rightMouseDown])
             button.target = self
-            button.toolTip = "魔镜魔镜,老子是不是最帅的人?"
+            button.toolTip = NSLocalizedString("tool_tip", comment: "")
         }
         statusItem.highlightMode = true
+
 
         popover.behavior = NSPopover.Behavior(rawValue: 1)!
         popover.appearance = NSAppearance.init(named: .vibrantLight)
@@ -50,11 +51,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     @objc func mouseDownAction() {
         let event = NSApp.currentEvent
         if event?.type == .leftMouseDown{
-            print("左边的")
             leftMouseDownAction()
             statusItem.button?.state = NSControl.StateValue.off
         }else if event?.type == .rightMouseDown{
-            print("右边的")
             rightMouseDownAction()
             statusItem.button?.state = NSControl.StateValue.mixed
         }else{
@@ -67,9 +66,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     func rightMouseDownAction() {
         let menu = NSMenu.init()
         menu.delegate = self
-        menu.addItem(withTitle: "  下载导入格式文件  ", action: #selector(exportDemoAction), keyEquivalent: "")
-        menu.addItem(withTitle: "  帮助  ", action: #selector(helpAction), keyEquivalent: "")
-        menu.addItem(withTitle: "  退出  ", action: #selector(exitAction), keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("export_help", comment: ""), action: #selector(exportDemoAction), keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("help", comment: ""), action: #selector(helpAction), keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("exit", comment: ""), action: #selector(exitAction), keyEquivalent: "")
         statusItem.popUpMenu(menu)
     }
     @objc func helpAction() {
@@ -80,7 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     }
     @objc func exportDemoAction() {
         let savePanel = NSSavePanel()
-        savePanel.title = "选择文件导出位置"
+        savePanel.title = NSLocalizedString("export_title", comment: "")
         savePanel.nameFieldStringValue = "minaOTP_example.json"
         savePanel.canCreateDirectories = true
         savePanel.isExtensionHidden = false
@@ -88,16 +87,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         if i == NSApplication.ModalResponse.OK {
 
             // 将数据保存到UserDefaults
-            let temArray = [["remark":"备注0", "secret":"密钥0", "issuer":"发行者0"], ["remark":"备注1", "secret":"密钥1", "issuer":"发行者1"]]
+            let temArray = [["remark":"remark_value", "secret":"secret_value", "issuer":"issuer_value"], ["remark":"remark_value", "secret":"secret_value", "issuer":"issuer_value"]]
             let temJsonData = try! JSONSerialization.data(withJSONObject: temArray, options: .prettyPrinted)
             let temJsonStr = String.init(data: temJsonData, encoding: .utf8)
             do {
                 try temJsonStr?.write(to: savePanel.url!, atomically: true, encoding: .utf8)
-                Tools().showAlert(message: "导出成功")
+                Tools().showAlert(message: NSLocalizedString("export_sucess", comment: ""))
             } catch {
-                Tools().showAlert(message: "导出失败,请重新尝试")
+                Tools().showAlert(message: NSLocalizedString("export_failure", comment: ""))
             }
         }
+
     }
     func popoverWillShow(_ notification: Notification) {
         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"reload"])
@@ -123,8 +123,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         
     }
     @objc func tappedDoubleCommandKey() {
-        print("1231231")
-        leftMouseDownAction()
+        if self.popover.isShown {
+            self.popover.close()
+        }else{
+            leftMouseDownAction()
+        }
     }
     func removeHotKey() {
 

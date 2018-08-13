@@ -10,9 +10,9 @@ import Cocoa
 
 class AddWindow: NSWindow, NSTextFieldDelegate{
 
-    let cancleButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: "取消")
-    let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 420, y: 12, width: 48, height: 24), title: "保存")
-    let chooseButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 368, y: 290, width: 100, height: 24), title: "选取二维码图片")
+    let cancleButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: NSLocalizedString("cancle", comment: ""))
+    let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 420, y: 12, width: 48, height: 24), title: NSLocalizedString("save", comment: ""))
+    let chooseButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 318, y: 290, width: 150, height: 24), title: NSLocalizedString("choose_qr_image_btn_title", comment: ""))
     let textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
 
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
@@ -25,7 +25,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         self.toolbar?.isVisible = false
 
         self.styleMask = [.titled, .closable]
-        self.title = "添加二步验证"
+        self.title = NSLocalizedString("add_title", comment: "")
 
         self.standardWindowButton(.miniaturizeButton)?.isHidden = true
         self.standardWindowButton(.zoomButton)?.isHidden = true
@@ -55,7 +55,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         saveButton.isEnabled = false
     }
     lazy var remarkTitleTextField: NSTextField = {
-        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 270, width: 100, height: 18), textColor: textColor, text: "请输入remark:", font: 12)
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 270, width: 200, height: 18), textColor: textColor, text: NSLocalizedString("remark_placeholder", comment: ""), font: 12)
         lab.isEditable = false
         lab.delegate = self
         return lab
@@ -72,7 +72,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         return lab
     }()
     lazy var issuerTitleTextField: NSTextField = {
-        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 200, width: 100, height: 18), textColor: textColor, text: "请输入issuer:", font: 12)
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 200, width: 200, height: 18), textColor: textColor, text: NSLocalizedString("issuer_placeholder", comment: ""), font: 12)
         lab.isEditable = false
         lab.delegate = self
         return lab
@@ -89,7 +89,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         return lab
     }()
     lazy var secretTitleTextField: NSTextField = {
-        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 130, width: 100, height: 18), textColor: textColor, text: "请输入secret:", font: 12)
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 130, width: 200, height: 18), textColor: textColor, text: NSLocalizedString("secret_placeholder", comment: ""), font: 12)
         lab.isEditable = false
         lab.delegate = self
         return lab
@@ -109,13 +109,11 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         if self.remarkTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
             saveButton.isEnabled = false
         }else{
-            print("可以输入了")
             saveButton.isEnabled = true
         }
 
     }
     @objc func cancleButtonAction() {
-        print("cancleButtonAction")
         self.close()
     }
 
@@ -127,16 +125,15 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         var allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
         allItems.append(otp)
         defaults.set(allItems, forKey: "MinaOtpMAC")
-        ShowTips().showTip(message: "添加成功,请返回程序查看", view: self.contentView!)
+        ShowTips().showTip(message: NSLocalizedString("add_success_tip", comment: ""), view: self.contentView!)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.close()
         }
     }
 
     @objc func chooseButtonAction() {
-        print("chooseButtonAction")
         let openPanel = NSOpenPanel.init()
-        openPanel.prompt = "选择"
+        openPanel.prompt = NSLocalizedString("choose_title", comment: "")
         openPanel.allowedFileTypes = NSImage.imageTypes
         let code = openPanel.runModal()
         if code.rawValue == 1{
@@ -154,13 +151,12 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
             guard let result = feature.messageString else { return }
             self.otpFormat(code: result)
         }else{
-            print("非二维码图片")
-            Tools().showAlert(message: "非二维码图片")
+            Tools().showAlert(message: NSLocalizedString("image_error_tip", comment: ""))
         }
     }
     func otpFormat(code: String) {
         if code.contains("otpauth://totp/") == false || code.contains("?secret=") == false || code.contains("&issuer=") == false{
-            Tools().showAlert(message: "二维码内容格式不正确")
+            Tools().showAlert(message: NSLocalizedString("image_content_error_tip", comment: ""))
             return
         }
 

@@ -10,8 +10,8 @@ import Cocoa
 
 class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
 
-    let cancleButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: "取消")
-    let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 140, y: 12, width: 48, height: 24), title: "保存")
+    let cancleButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: NSLocalizedString("cancle", comment: ""))
+    let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 140, y: 12, width: 48, height: 24), title: NSLocalizedString("save", comment: ""))
     var editRow:Int = -1
     let textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
 
@@ -50,7 +50,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         saveButton.isEnabled = false
     }
     lazy var remarkTitleTextField: NSTextField = {
-        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 220, width: 100, height: 18), textColor: textColor, text: "请输入remark:", font: 10)
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 220, width: 180, height: 18), textColor: textColor, text: NSLocalizedString("remark_placeholder", comment: ""), font: 10)
         lab.isEditable = false
         lab.delegate = self
         return lab
@@ -67,7 +67,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         return lab
     }()
     lazy var issuerTitleTextField: NSTextField = {
-        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 160, width: 100, height: 18), textColor: textColor, text: "请输入issuer:", font: 10)
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 160, width: 180, height: 18), textColor: textColor, text: NSLocalizedString("issuer_placeholder", comment: ""), font: 10)
         lab.isEditable = false
         return lab
     }()
@@ -84,7 +84,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         return lab
     }()
     lazy var secretTitleTextField: NSTextField = {
-        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 100, width: 100, height: 18), textColor: textColor, text: "请输入secret:", font: 10)
+        let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 100, width: 180, height: 18), textColor: textColor, text: NSLocalizedString("secret_placeholder", comment: ""), font: 10)
         lab.isEditable = false
         lab.delegate = self
         return lab
@@ -124,8 +124,6 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         allItems.remove(at: editRow)
         allItems.insert(otp, at: editRow)
         defaults.set(allItems, forKey: "MinaOtpMAC")
-//        Tools().showAlert(message: "修改成功")
-//        ShowTips().showTip(message: "修改成功", view: self.view)
         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"edit_save"])
     }
 

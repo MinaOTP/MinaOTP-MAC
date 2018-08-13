@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  MinaOTP-MAC
+
+  Created by 武建明 on 2018/8/13.
+  Copyright © 2018年 Four_w. All rights reserved.
+*/
+"add" = "Add";
+"export" = "Export";
+"import" = "Import";
+"add_title" = "Add Two-factor Authentication";
+"choose_qr_image_btn_title" = "Choose Qr Code Image";
+"save" = "Save";
+"cancle" = "Cancle";
+"remark_placeholder" = "Please enter the remark:";
+"issuer_placeholder" = "Please enter the issuer:";
+"secret_placeholder" = "Please enter the secret:";
+"add_success_tip" = "Added successfully, please return it to look at it";
+"image_error_tip" = "It's not qr code image";
+"image_content_error_tip" = "Qr code image content format is not correct";
+"tool_tip" = "Wish you have a nice day";
+"export_help" = "Download the format of import file";
+"help" = "Help";
+"exit" = "Exit";
+"export_title" = "Select the file export position";
+"delete" = "Delete";
+"edit" = "Edit";
+"export_sucess" = "Exported successfully";
+"export_failure" = "Export of failure, please try again";
+"parse_failed" = "Parse failed, please provide the correct json content";
+"choose_title" = "Choose";
+"copy_success" = "Copy Success";

@@ -11,9 +11,9 @@ import Cocoa
 class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, NSPopoverDelegate{
 
 
-    let importButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 12, y: 365, width: 48, height: 24), title: "导入")
-    let exportButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 72, y: 365, width: 48, height: 24), title: "导出")
-    let addButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 240, y: 365, width: 48, height: 24), title: "添加")
+    let importButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 12, y: 365, width: 48, height: 24), title: NSLocalizedString("import", comment: ""))
+    let exportButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 72, y: 365, width: 48, height: 24), title: NSLocalizedString("export", comment: ""))
+    let addButton = CustomFlatButton().customFlatButton(frame: CGRect(x: 240, y: 365, width: 48, height: 24), title: NSLocalizedString("add", comment: "add"))
     var totpArray = [String]()
     var oldTimeStamp = 0
     let kCellHeight = CGFloat(60)
@@ -40,14 +40,6 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         var issuer:String
         var remark:String
     }
-    lazy var addPopoverView : NSPopover = {
-        let pop = NSPopover()
-        pop.behavior = NSPopover.Behavior(rawValue: 1)!
-        pop.appearance = NSAppearance.init(named: .vibrantLight)
-        pop.contentViewController = AddPopoverViewController()
-        pop.delegate = self
-        return pop
-    }()
     lazy var editPopoverView : NSPopover = {
         let pop = NSPopover()
         pop.behavior = NSPopover.Behavior(rawValue: 1)!
@@ -93,8 +85,8 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     func menuNeedsUpdate(_ menu: NSMenu) {
         menu.removeAllItems()
         clickedRow = totpTableView.clickedRow
-        menu.addItem(withTitle: "  删除  ", action: #selector(deleteRowAction), keyEquivalent: "")
-        menu.addItem(withTitle: "  编辑  ", action: #selector(editRowAction), keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("delete", comment: ""), action: #selector(deleteRowAction), keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("edit", comment: ""), action: #selector(editRowAction), keyEquivalent: "")
     }
     func menuWillOpen(_ menu: NSMenu) {
         print("menuWillOpen")
@@ -154,7 +146,6 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         }else if (type as! String) == "edit_cancle" {
             editPopoverView.close()
         }else if (type as! String) == "add_success_from_textfield" {
-            addPopoverView.close()
             self.totpTableView.scrollRowToVisible(totpArray.count-1)
         }
     }
@@ -202,12 +193,12 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         pasteboard.declareTypes([.string], owner: nil)
         let res = pasteboard.setString((view as! CellView).codeTextField.stringValue, forType: .string)
         if res {
-            ShowTips().showTip(message: "复制成功", view: self.view)
+            ShowTips().showTip(message: NSLocalizedString("copy_success", comment: ""), view: self.view)
         }
     }
     @objc func importButtonAction() {
         let openPanel = NSOpenPanel.init()
-        openPanel.prompt = "选择"
+        openPanel.prompt = NSLocalizedString("choose_title", comment: "")
         openPanel.allowedFileTypes = ["json"]
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
@@ -229,18 +220,18 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
                     allItems.append(otp)
                 }
                 defaults.set(allItems, forKey: "MinaOtpMAC")
-                Tools().showAlert(message: "添加成功,请返回程序查看")
+                Tools().showAlert(message: NSLocalizedString("add_success_tip", comment: ""))
 
             } catch let error{
                 print(error)
-                Tools().showAlert(message: "解析失败,请提供正确的json内容")
+                Tools().showAlert(message: NSLocalizedString("parse_failed", comment: ""))
             }
         }
     }
 
     @objc func exportButtonAction() {
         let savePanel = NSSavePanel()
-        savePanel.title = "选择文件导出位置"
+        savePanel.title = NSLocalizedString("export_title", comment: "")
         savePanel.nameFieldStringValue = "minaOTP.json"
         savePanel.canCreateDirectories = true
         savePanel.isExtensionHidden = false
@@ -260,9 +251,9 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
 
             do {
                 try temJsonStr?.write(to: savePanel.url!, atomically: true, encoding: .utf8)
-                Tools().showAlert(message: "导出成功")
+                Tools().showAlert(message: NSLocalizedString("export_sucess", comment: ""))
             } catch {
-                Tools().showAlert(message: "导出失败,请重新尝试")
+                Tools().showAlert(message: NSLocalizedString("export_failure", comment: ""))
             }
         }
     }

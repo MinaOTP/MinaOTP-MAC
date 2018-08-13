@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  MinaOTP-MAC
+
+  Created by 武建明 on 2018/8/13.
+  Copyright © 2018年 Four_w. All rights reserved.
+*/
+"add" = "添加";
+"export" = "导出";
+"import" = "导入";
+"add_title" = "添加二步验证";
+"choose_qr_image_btn_title" = "选取二维码图片";
+"save" = "保存";
+"cancle" = "取消";
+"remark_placeholder" = "请输入remark:";
+"issuer_placeholder" = "请输入issuer:";
+"secret_placeholder" = "请输入secret:";
+"add_success_tip" = "添加成功,请返回程序查看";
+"image_error_tip" = "非二维码图片";
+"image_content_error_tip" = "图片内容格式不正确";
+"tool_tip" = "祝:每天开心,代码无BUG";
+"export_help" = "下载导入文件格式";
+"help" = "帮助";
+"exit" = "退出";
+"export_title" = "选择文件导出位置";
+"delete" = "删除";
+"edit" = "编辑";
+"export_sucess" = "导出成功";
+"export_failure" = "导出失败,请重试";
+"parse_failed" = "导入失败,请提供正确的Json格式";
+"choose_title" = "选择";
+"copy_success" = "复制成功";
