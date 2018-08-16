@@ -35,7 +35,7 @@ Edit
 
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide5.png)
 
-Export
+Export/Users/wujianming/Desktop/FanURPBE
 
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide7.png)
 
@@ -58,3 +58,8 @@ Add Token
 ### Todo
 * [ ] sync to icloud
 * [ ] add hotkey to copy token 
+
+### Acknowledgements
+[FlatButton](https://github.com/OskarGroth/FlatButton)
+[Magnet](https://github.com/Clipy/Magnet)
+Thanks for their great work. 
