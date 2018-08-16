@@ -14,18 +14,25 @@ The program will generate secure dynamic 2FA tokens for you, and the `add`, `edi
 ### Software Screenshot
 Home
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide0.png)
+
 Manual entry
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide1.png)
+
 Delete
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide2.png)
+
 Help
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide3.png)
+
 Edit
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide5.png)
+
 Export
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide7.png)
+
 Add Token
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide8.png)
+
 
 ### Feature
 
