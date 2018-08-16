@@ -10,7 +10,7 @@ import Cocoa
 
 class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
 
-    let cancleButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: NSLocalizedString("cancle", comment: ""))
+    let cancelButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: NSLocalizedString("cancel", comment: ""))
     let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 140, y: 12, width: 48, height: 24), title: NSLocalizedString("save", comment: ""))
     var editRow:Int = -1
     let textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
@@ -33,7 +33,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
 
     }
     private func config() {
-        self.view.addSubview(cancleButton)
+        self.view.addSubview(cancelButton)
         self.view.addSubview(saveButton)
         self.view.addSubview(self.remarkTitleTextField)
         self.view.addSubview(self.remarkTextField)
@@ -42,9 +42,9 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         self.view.addSubview(self.secretTitleTextField)
         self.view.addSubview(self.secretTextFiled)
 
-        cancleButton.target = self
+        cancelButton.target = self
         saveButton.target = self
-        cancleButton.action = #selector(self.cancleButtonAction)
+        cancelButton.action = #selector(self.cancelButtonAction)
         saveButton.action = #selector(self.saveButtonAction(button:))
 
         saveButton.isEnabled = false
@@ -109,9 +109,9 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         }
 
     }
-    @objc func cancleButtonAction() {
-        print("cancleButtonAction")
-        NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"edit_cancle"])
+    @objc func cancelButtonAction() {
+        print("cancelButtonAction")
+        NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"edit_cancel"])
     }
 
     @objc func saveButtonAction(button: NSButton) {

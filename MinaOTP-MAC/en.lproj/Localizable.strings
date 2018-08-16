@@ -11,7 +11,7 @@
 "add_title" = "Add Two-factor Authentication";
 "choose_qr_image_btn_title" = "Choose Qr Code Image";
 "save" = "Save";
-"cancle" = "Cancle";
+"cancel" = "Cancel";
 "remark_placeholder" = "Please enter the remark:";
 "issuer_placeholder" = "Please enter the issuer:";
 "secret_placeholder" = "Please enter the secret:";

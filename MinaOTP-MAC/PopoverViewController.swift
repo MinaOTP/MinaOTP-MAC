@@ -143,7 +143,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
             startTimer()
         }else if (type as! String) == "close" {
             stopTimer()
-        }else if (type as! String) == "edit_cancle" {
+        }else if (type as! String) == "edit_cancel" {
             editPopoverView.close()
         }else if (type as! String) == "add_success_from_textfield" {
             self.totpTableView.scrollRowToVisible(totpArray.count-1)

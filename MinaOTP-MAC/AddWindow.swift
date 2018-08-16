@@ -10,7 +10,7 @@ import Cocoa
 
 class AddWindow: NSWindow, NSTextFieldDelegate{
 
-    let cancleButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: NSLocalizedString("cancle", comment: ""))
+    let cancelButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: NSLocalizedString("cancel", comment: ""))
     let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 420, y: 12, width: 48, height: 24), title: NSLocalizedString("save", comment: ""))
     let chooseButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 318, y: 290, width: 150, height: 24), title: NSLocalizedString("choose_qr_image_btn_title", comment: ""))
     let textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
@@ -36,7 +36,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         self.backgroundColor = NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.9)
         self.isMovableByWindowBackground = true
 
-        self.contentView?.addSubview(cancleButton)
+        self.contentView?.addSubview(cancelButton)
         self.contentView?.addSubview(saveButton)
         self.contentView?.addSubview(chooseButton)
         self.contentView?.addSubview(self.remarkTextField)
@@ -46,10 +46,10 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         self.contentView?.addSubview(self.issuerTitleTextField)
         self.contentView?.addSubview(self.secretTitleTextField)
 
-        cancleButton.target = self
+        cancelButton.target = self
         saveButton.target = self
         chooseButton.target = self
-        cancleButton.action = #selector(self.cancleButtonAction)
+        cancelButton.action = #selector(self.cancelButtonAction)
         chooseButton.action = #selector(self.chooseButtonAction)
         saveButton.action = #selector(self.saveButtonAction(button:))
         saveButton.isEnabled = false
@@ -113,7 +113,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         }
 
     }
-    @objc func cancleButtonAction() {
+    @objc func cancelButtonAction() {
         self.close()
     }
 

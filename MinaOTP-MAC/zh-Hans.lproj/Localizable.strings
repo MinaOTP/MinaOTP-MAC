@@ -11,7 +11,7 @@
 "add_title" = "添加二步验证";
 "choose_qr_image_btn_title" = "选取二维码图片";
 "save" = "保存";
-"cancle" = "取消";
+"cancel" = "取消";
 "remark_placeholder" = "请输入remark:";
 "issuer_placeholder" = "请输入issuer:";
 "secret_placeholder" = "请输入secret:";
