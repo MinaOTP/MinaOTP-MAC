@@ -35,7 +35,7 @@ Edit
 
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide5.png)
 
-Export/Users/wujianming/Desktop/FanURPBE
+Export
 
 ![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide7.png)
 
