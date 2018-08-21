@@ -7,6 +7,9 @@
 //
 
 import Cocoa
+import Foundation
+import CoreImage
+
 
 class CustomFlatButton{
     func customFlatButton(frame: CGRect, title: String) -> FlatButton {

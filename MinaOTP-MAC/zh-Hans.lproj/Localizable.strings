@@ -9,7 +9,10 @@
 "export" = "导出";
 "import" = "导入";
 "add_title" = "添加二步验证";
+"scan_title" = "扫描二维码图片";
 "choose_qr_image_btn_title" = "选取二维码图片";
+"scan_qr_image_btn_title" = "扫描二维码图片";
+"scan_qr_success" = "扫描成功, 1秒后将自动关闭";
 "save" = "保存";
 "cancel" = "取消";
 "remark_placeholder" = "请输入remark:";
@@ -30,3 +33,4 @@
 "parse_failed" = "导入失败,请提供正确的Json格式";
 "choose_title" = "选择";
 "copy_success" = "复制成功";
+"check_releases" = "检测更新";

@@ -9,7 +9,10 @@
 "export" = "Export";
 "import" = "Import";
 "add_title" = "Add Two-factor Authentication";
+"scan_title" = "Scan Qr Code Image";
 "choose_qr_image_btn_title" = "Choose Qr Code Image";
+"scan_qr_image_btn_title" = "Scan Qr Code Image";
+"scan_qr_success" = "Scan is successful, will automatically shut down after 1 second";
 "save" = "Save";
 "cancel" = "Cancel";
 "remark_placeholder" = "Please enter the remark:";
@@ -30,3 +33,4 @@
 "parse_failed" = "Parse failed, please provide the correct json content";
 "choose_title" = "Choose";
 "copy_success" = "Copy Success";
+"check_releases" = "Check Releases";

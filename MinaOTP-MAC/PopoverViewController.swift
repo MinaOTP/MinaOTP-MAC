@@ -35,6 +35,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
     override func awakeFromNib() {
     }
+    //MARK: - Lazy
     struct OtpModel:Codable {
         var secret:String
         var issuer:String
@@ -82,20 +83,6 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         RunLoop.main.add(t, forMode: .commonModes)
         return t
     }()
-    func menuNeedsUpdate(_ menu: NSMenu) {
-        menu.removeAllItems()
-        clickedRow = totpTableView.clickedRow
-        menu.addItem(withTitle: NSLocalizedString("delete", comment: ""), action: #selector(deleteRowAction), keyEquivalent: "")
-        menu.addItem(withTitle: NSLocalizedString("edit", comment: ""), action: #selector(editRowAction), keyEquivalent: "")
-    }
-    func menuWillOpen(_ menu: NSMenu) {
-        print("menuWillOpen")
-        stopTimer()
-    }
-    func menuDidClose(_ menu: NSMenu) {
-        print("menuDidClose")
-        startTimer()
-    }
     private func config() {
         self.view.addSubview(importButton)
         self.view.addSubview(exportButton)
@@ -112,7 +99,21 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
 
         totpTableView.registerForDraggedTypes([NSPasteboard.PasteboardType.string])
     }
-
+    // MARK: - Action
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        menu.removeAllItems()
+        clickedRow = totpTableView.clickedRow
+        menu.addItem(withTitle: NSLocalizedString("delete", comment: ""), action: #selector(deleteRowAction), keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("edit", comment: ""), action: #selector(editRowAction), keyEquivalent: "")
+    }
+    func menuWillOpen(_ menu: NSMenu) {
+        print("menuWillOpen")
+        stopTimer()
+    }
+    func menuDidClose(_ menu: NSMenu) {
+        print("menuDidClose")
+        startTimer()
+    }
     func reloadData() {
         totpArray.removeAll()
         let defaults = UserDefaults.standard
@@ -149,8 +150,6 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
             self.totpTableView.scrollRowToVisible(totpArray.count-1)
         }
     }
-
-
     func popoverWillClose(_ notification: Notification) {
         print("popoverWillClose")
         startTimer()
@@ -265,6 +264,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         NSApp.activate(ignoringOtherApps: true)
     }
 
+    // MARK: - TableViewDelegate,TableViewDataSource
     func numberOfRows(in tableView: NSTableView) -> Int {
         return totpArray.count
     }

@@ -22,6 +22,8 @@
 		20A17A6E211D90360052792D /* HotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A17A68211D90350052792D /* HotKey.swift */; };
 		20A17A72212133430052792D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20A17A74212133430052792D /* InfoPlist.strings */; };
 		20A17A78212133FE0052792D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20A17A7A212133FE0052792D /* Localizable.strings */; };
+		20A17A8B2126BD260052792D /* ScanWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A17A8A2126BD260052792D /* ScanWindow.swift */; };
+		20A17A8F212A8B850052792D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A17A8D212A8B840052792D /* Utils.m */; };
 		20FBA95721106EB10017BFC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBA95621106EB10017BFC3 /* AppDelegate.swift */; };
 		20FBA95921106EB20017BFC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20FBA95821106EB20017BFC3 /* Assets.xcassets */; };
 		20FBA95C21106EB20017BFC3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20FBA95A21106EB20017BFC3 /* MainMenu.xib */; };
@@ -74,6 +76,9 @@
 		20A17A752121335D0052792D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		20A17A79212133FE0052792D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		20A17A7B212134000052792D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		20A17A8A2126BD260052792D /* ScanWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanWindow.swift; sourceTree = "<group>"; };
+		20A17A8D212A8B840052792D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		20A17A8E212A8B850052792D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		20FBA95321106EB10017BFC3 /* MinaOTP-MAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MinaOTP-MAC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FBA95621106EB10017BFC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20FBA95821106EB20017BFC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,6 +150,13 @@
 			path = Magnet;
 			sourceTree = "<group>";
 		};
+		20A17A91212BFF6F0052792D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		20FBA94A21106EB10017BFC3 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +164,7 @@
 				20FBA96621106EB20017BFC3 /* MinaOTP-MACTests */,
 				20FBA97121106EB20017BFC3 /* MinaOTP-MACUITests */,
 				20FBA95421106EB10017BFC3 /* Products */,
+				20A17A91212BFF6F0052792D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,12 +181,15 @@
 		20FBA95521106EB10017BFC3 /* MinaOTP-MAC */ = {
 			isa = PBXGroup;
 			children = (
+				20A17A8E212A8B850052792D /* Utils.h */,
+				20A17A8D212A8B840052792D /* Utils.m */,
 				20A17A61211D90350052792D /* Magnet */,
 				20FC6514211AE33B002DF759 /* MinaOTP-MAC.entitlements */,
 				20776B042114318B00C94441 /* OTPGenerator */,
 				20FBA95621106EB10017BFC3 /* AppDelegate.swift */,
 				20248BA321117A900043D902 /* PopoverViewController.swift */,
 				20FC650E21194BE9002DF759 /* AddWindow.swift */,
+				20A17A8A2126BD260052792D /* ScanWindow.swift */,
 				20FC650C21185C7A002DF759 /* EditPopoverViewController.swift */,
 				20887FE5211421DD000ACF00 /* CellView.swift */,
 				20FC65082117F84D002DF759 /* CSTableRowView.swift */,
@@ -280,6 +296,9 @@
 					20FBA95221106EB10017BFC3 = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
+							com.apple.NetworkExtensions = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
@@ -353,6 +372,7 @@
 				20248BA6211195850043D902 /* FlatButton.swift in Sources */,
 				20887FE6211421DD000ACF00 /* CellView.swift in Sources */,
 				20A17A6E211D90360052792D /* HotKey.swift in Sources */,
+				20A17A8F212A8B850052792D /* Utils.m in Sources */,
 				20A17A69211D90360052792D /* HotKeyCenter.swift in Sources */,
 				20A17A6C211D90360052792D /* KeyCombo.swift in Sources */,
 				20FC6513211A9B3B002DF759 /* StatusItemView.swift in Sources */,
@@ -363,6 +383,7 @@
 				20776B092114318B00C94441 /* GeneratorTotp.m in Sources */,
 				20A17A6A211D90360052792D /* KeyCodeTransformer.swift in Sources */,
 				20FC65092117F84D002DF759 /* CSTableRowView.swift in Sources */,
+				20A17A8B2126BD260052792D /* ScanWindow.swift in Sources */,
 				20248BA821119AC10043D902 /* Tools.swift in Sources */,
 				20776B0A2114318B00C94441 /* Base32Addition.m in Sources */,
 				20A17A6B211D90360052792D /* KeyTransformer.swift in Sources */,

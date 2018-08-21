@@ -8,11 +8,15 @@
 
 import Cocoa
 
-class AddWindow: NSWindow, NSTextFieldDelegate{
+class AddWindow: NSWindow, NSTextFieldDelegate, ScanWindowDelegate{
 
     let cancelButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: NSLocalizedString("cancel", comment: ""))
     let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 420, y: 12, width: 48, height: 24), title: NSLocalizedString("save", comment: ""))
     let chooseButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 318, y: 290, width: 150, height: 24), title: NSLocalizedString("choose_qr_image_btn_title", comment: ""))
+
+    let scanButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 290, width: 150, height: 24), title: NSLocalizedString("scan_qr_image_btn_title", comment: ""))
+
+
     let textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
 
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
@@ -39,6 +43,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         self.contentView?.addSubview(cancelButton)
         self.contentView?.addSubview(saveButton)
         self.contentView?.addSubview(chooseButton)
+        self.contentView?.addSubview(scanButton)
         self.contentView?.addSubview(self.remarkTextField)
         self.contentView?.addSubview(self.issuerTextField)
         self.contentView?.addSubview(self.secretTextFiled)
@@ -49,11 +54,14 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         cancelButton.target = self
         saveButton.target = self
         chooseButton.target = self
+        scanButton.target = self
         cancelButton.action = #selector(self.cancelButtonAction)
         chooseButton.action = #selector(self.chooseButtonAction)
         saveButton.action = #selector(self.saveButtonAction(button:))
+        scanButton.action = #selector(self.scanButtonAction)
         saveButton.isEnabled = false
     }
+    // MARK: - Lazy
     lazy var remarkTitleTextField: NSTextField = {
         let lab = Tools().generateTextField(frame: NSRect(x: 12, y: 270, width: 200, height: 18), textColor: textColor, text: NSLocalizedString("remark_placeholder", comment: ""), font: 12)
         lab.isEditable = false
@@ -105,6 +113,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
         lab.layer?.borderColor = NSColor.mainColor.cgColor
         return lab
     }()
+    // MARK: - FUNC
     override func controlTextDidChange(_ obj: Notification) {
         if self.remarkTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
             saveButton.isEnabled = false
@@ -116,7 +125,15 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
     @objc func cancelButtonAction() {
         self.close()
     }
-
+    @objc func scanButtonAction() {
+        print("扫描")
+//        ScanQRCodeOnScreen()
+        let temWindow = ScanWindow.init(contentRect: NSRect(x: 0, y: 0, width: 300, height: 300), styleMask: .closable, backing: .buffered, defer: true)
+        let windowVC = NSWindowController.init(window: temWindow)
+        temWindow.scanDelegate = self
+        windowVC.window?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
     @objc func saveButtonAction(button: NSButton) {
         let otp = Tools().totpStringFormat(remark: self.remarkTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
 
@@ -159,13 +176,15 @@ class AddWindow: NSWindow, NSTextFieldDelegate{
             Tools().showAlert(message: NSLocalizedString("image_content_error_tip", comment: ""))
             return
         }
-
         let totpDic = Tools().totpDictionaryFormat(code: code)
         remarkTextField.stringValue = totpDic["remark"] as! String
         issuerTextField.stringValue = totpDic["issuer"] as! String
         secretTextFiled.stringValue = totpDic["secret"] as! String
         saveButton.isEnabled = true
-
     }
-
+    //MARK: - ScanWindowDelegate
+    func scanSuccess(code: String) {
+        self.becomeFirstResponder()
+        self.otpFormat(code: code)
+    }
 }

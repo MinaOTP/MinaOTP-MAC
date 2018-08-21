@@ -329,7 +329,6 @@ open class FlatButton: NSButton, CALayerDelegate {
             mouseDown = true
             setOn(state == .on ? false : true)
         }
-        print("12313123123131231212312")
     }
 
     override open func mouseEntered(with event: NSEvent) {

@@ -8,6 +8,7 @@
 
 import Cocoa
 import Carbon
+import Foundation
 
 @NSApplicationMain
 
@@ -17,10 +18,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     let popover = NSPopover.init()
     let popoverVC = PopoverViewController()
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+    struct GitHubInfoModel:Codable {
+        var tag_name:String
+        var name:String
+        var html_url:String
+    }
 
-//        addLocalHotKey(keyCode: UInt32(kVK_ANSI_0))
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
 
         if let button = statusItem.button{
             button.image = NSImage.init(named: NSImage.Name(rawValue: "close"))
@@ -32,13 +36,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         }
         statusItem.highlightMode = true
 
-
         popover.behavior = NSPopover.Behavior(rawValue: 1)!
         popover.appearance = NSAppearance.init(named: .vibrantLight)
         popover.contentViewController = popoverVC
         popover.delegate = self
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { (event) in
             if event.type == .leftMouseDown || event.type == .rightMouseDown{
+                self.statusItem.button?.state = NSControl.StateValue.off
                 if self.popover.isShown {
                     self.popover.close()
                 }
@@ -46,16 +50,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         }
         addHotKey()
 
-
     }
     @objc func mouseDownAction() {
         let event = NSApp.currentEvent
         if event?.type == .leftMouseDown{
-            leftMouseDownAction()
             statusItem.button?.state = NSControl.StateValue.off
+            leftMouseDownAction()
         }else if event?.type == .rightMouseDown{
             rightMouseDownAction()
-            statusItem.button?.state = NSControl.StateValue.mixed
         }else{
             print("谁点的")
         }
@@ -67,15 +69,45 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         let menu = NSMenu.init()
         menu.delegate = self
         menu.addItem(withTitle: NSLocalizedString("export_help", comment: ""), action: #selector(exportDemoAction), keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("check_releases", comment: ""), action: #selector(checkReleases), keyEquivalent: "")
         menu.addItem(withTitle: NSLocalizedString("help", comment: ""), action: #selector(helpAction), keyEquivalent: "")
         menu.addItem(withTitle: NSLocalizedString("exit", comment: ""), action: #selector(exitAction), keyEquivalent: "")
         statusItem.popUpMenu(menu)
     }
     @objc func helpAction() {
-        NSWorkspace.shared.open(NSURL.init(string: "https://github.com/wjmwjmwb/MinaOTP-MAC")! as URL)
+        NSWorkspace.shared.open(NSURL.init(string: "https://github.com/MinaOTP/MinaOTP-MAC")! as URL)
     }
     @objc func exitAction() {
         NSApp.terminate(nil)
+    }
+    @objc func checkReleases() {
+        let requestUrl = NSURL.init(string: "https://api.github.com/repos/MinaOTP/MinaOTP-MAC/releases/latest")
+        let request = URLRequest.init(url: requestUrl! as URL)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            DispatchQueue.main.async {
+                self.dealRequestData(data: data!)
+            }
+        }
+        task.resume()
+    }
+    func dealRequestData (data: Data){
+        let decoder = JSONDecoder()
+        do {
+            let model = try decoder.decode(GitHubInfoModel.self, from: data as Data)
+            print(model.tag_name)
+            let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+            print(version)
+
+            if version != model.tag_name {
+                Tools().showAlert(message: "呀哈哈! 你发现了新版本更新。\n请前往[https://github.com/MinaOTP/MinaOTP-MAC/releases]进行更新吧!")
+            }else{
+                Tools().showAlert(message: "呀哈哈! 你的是最新版本哦!")
+            }
+
+        } catch {
+            print("error")
+        }
     }
     @objc func exportDemoAction() {
         let savePanel = NSSavePanel()
@@ -113,12 +145,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
 
     func addHotKey() {
 
-        guard let keyCombo3 = KeyCombo(doubledCocoaModifiers: .command) else { return }
-        let hotKey3 = HotKey(identifier: "CommandDoubleTap",
-                             keyCombo: keyCombo3,
+        guard let keyCombo = KeyCombo(doubledCocoaModifiers: .command) else { return }
+        let hotKey = HotKey(identifier: "CommandDoubleTap",
+                             keyCombo: keyCombo,
                              target: self,
                              action: #selector(AppDelegate.tappedDoubleCommandKey))
-        hotKey3.register()
+        hotKey.register()
 
         
     }

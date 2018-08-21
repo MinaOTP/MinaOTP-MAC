@@ -10,5 +10,6 @@
 #define MinaOTP_MAC_Bridging_Header_h
 
 #import "GeneratorTotp.h"
+#import "Utils.h"
 
 #endif /* MinaOTP_MAC_Bridging_Header_h */
