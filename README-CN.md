@@ -17,37 +17,35 @@ The program will generate secure dynamic 2FA tokens for you, and the `add`, `edi
 
 Home
 
-![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide0.png)
+![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/guide_en_10.png)
 
-Manual entry
+right click the item to delete or edit
 
-![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide1.png)
-
-Delete
-
-![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide2.png)
-
-Help
-
-![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide3.png)
+![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/guide_en_09.jpeg)
 
 Edit
 
-![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide5.png)
+![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/guide_en_05.png)
 
-Export
+right click the statusbar to get help
 
-![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide7.png)
+![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/guide_en_07.png)
 
 Add Token
 
-![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/MinaOtp-Guide8.png)
+![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/guide_en_08.jpeg)
+
+Scan Qr Code
+
+![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/guide_en_02.png)
+![screenshot](https://raw.githubusercontent.com/wjmwjmwb/GitImage/master/MinaOtp-Guide/guide_en_03.png)
 
 
 ### Feature
 
 * Generate the 2FA token
 * Choose a qrcode_image to add a new token
+* Scan a qrcode_image to add a new token
 * Add a new token mannually
 * Edit the issuer and remark info
 * Remove a existed token
