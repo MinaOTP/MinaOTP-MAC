@@ -61,3 +61,5 @@ Scan Qr Code
 [FlatButton](https://github.com/OskarGroth/FlatButton)
 [Magnet](https://github.com/Clipy/Magnet)
 Thanks for their great work. 
+
+### [中文文档](README_zh.md)
