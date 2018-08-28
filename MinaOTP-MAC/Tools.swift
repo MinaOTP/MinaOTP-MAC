@@ -89,7 +89,7 @@ class Tools: NSObject {
 
         let alert: NSAlert = NSAlert()
         alert.messageText = message
-        alert.addButton(withTitle: "确定")
+        alert.addButton(withTitle: NSLocalizedString("confirm", comment: ""))
         alert.alertStyle = NSAlert.Style.informational
         alert.runModal()
     }

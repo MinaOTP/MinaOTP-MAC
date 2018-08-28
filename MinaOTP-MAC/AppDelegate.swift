@@ -100,9 +100,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
             print(version)
 
             if version != model.tag_name {
-                Tools().showAlert(message: "呀哈哈! 你发现了新版本更新。\n请前往[https://github.com/MinaOTP/MinaOTP-MAC/releases]进行更新吧!")
+                Tools().showAlert(message: NSLocalizedString("has_new_version", comment: ""))
             }else{
-                Tools().showAlert(message: "呀哈哈! 你的是最新版本哦!")
+                Tools().showAlert(message: NSLocalizedString("no_new_version", comment: ""))
             }
 
         } catch {
@@ -117,8 +117,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         savePanel.isExtensionHidden = false
         let i = savePanel.runModal()
         if i == NSApplication.ModalResponse.OK {
-
-            // 将数据保存到UserDefaults
             let temArray = [["remark":"remark_value", "secret":"secret_value", "issuer":"issuer_value"], ["remark":"remark_value", "secret":"secret_value", "issuer":"issuer_value"]]
             let temJsonData = try! JSONSerialization.data(withJSONObject: temArray, options: .prettyPrinted)
             let temJsonStr = String.init(data: temJsonData, encoding: .utf8)

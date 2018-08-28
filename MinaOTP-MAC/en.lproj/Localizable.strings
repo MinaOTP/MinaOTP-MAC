@@ -33,4 +33,8 @@
 "parse_failed" = "Parse failed, please provide the correct json content";
 "choose_title" = "Choose";
 "copy_success" = "Copy Success";
-"check_releases" = "Check Releases";
+"check_releases" = "Check Update";
+"confirm" = "Confirm";
+"has_new_version" = "Ah Ha Ha! You have found the new version! \n Please go to [https://github.com/MinaOTP/MinaOTP-MAC/releases]! to update";
+"no_new_version" = "Ah Ha Ha! Your version is the latest!";
+

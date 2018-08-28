@@ -34,3 +34,7 @@
 "choose_title" = "选择";
 "copy_success" = "复制成功";
 "check_releases" = "检测更新";
+"confirm" = "确定";
+"has_new_version" = "呀哈哈! 你发现了新版本更新。\n请前往[https://github.com/MinaOTP/MinaOTP-MAC/releases]进行更新吧!";
+"no_new_version" = "呀哈哈! 你的版本是最新的哦!";
+

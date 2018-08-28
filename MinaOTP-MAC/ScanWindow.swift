@@ -59,7 +59,6 @@ class ScanWindow: NSWindow, NSWindowDelegate{
     func windowDidMove(_ notification: Notification) {
         print("windowDidMove")
 
-
         let screenRect = NSScreen.main?.visibleFrame
         let dif = (screenRect?.size.height)!-self.frame.origin.y-self.frame.size.height+23
 
