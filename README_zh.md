@@ -62,4 +62,4 @@ Scan Qr Code
 [Magnet](https://github.com/Clipy/Magnet)
 Thanks for their great work. 
 
-### [中文文档](README_zh.md)
+### [中文文档](README.md)
