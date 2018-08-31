@@ -172,7 +172,8 @@ class AddWindow: NSWindow, NSTextFieldDelegate, ScanWindowDelegate{
         }
     }
     func otpFormat(code: String) {
-        if code.contains("otpauth://totp/") == false || code.contains("?secret=") == false || code.contains("&issuer=") == false{
+        // otpauth://totp/UCloud:wujianming@licaifan.com?algorithm=SHA1&digits=6&issuer=UCloud&period=30&secret=N2IGDW2Y6XW3PCBX
+        if code.contains("otpauth://totp/") == false || code.contains("secret=") == false || code.contains("issuer=") == false{
             Tools().showAlert(message: NSLocalizedString("image_content_error_tip", comment: ""))
             return
         }

@@ -49,7 +49,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
             }
         }
         addHotKey()
-
     }
     @objc func mouseDownAction() {
         let event = NSApp.currentEvent

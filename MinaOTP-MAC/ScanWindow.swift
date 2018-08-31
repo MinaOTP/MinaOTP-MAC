@@ -69,7 +69,7 @@ class ScanWindow: NSWindow, NSWindowDelegate{
         let feature = detector?.features(in: ciImage)
         if (feature?.count)! > 0 {
             let f = feature?.first as! CIQRCodeFeature
-            if f.messageString?.contains("otpauth://totp/") == false || f.messageString?.contains("?secret=") == false || f.messageString?.contains("&issuer=") == false{
+            if f.messageString?.contains("otpauth://totp/") == false || f.messageString?.contains("secret=") == false || f.messageString?.contains("issuer=") == false{
                 imgView.image = NSImage.init(named: NSImage.Name(rawValue: "image_normal"))
             }else{
                 imgView.image = NSImage.init(named: NSImage.Name(rawValue: "image_selected"))
