@@ -27,8 +27,8 @@ class ProgressView: NSView {
         layer.frame = self.bounds
         layer.fillColor = NSColor.clear.cgColor
         layer.lineWidth = 2
-        layer.lineJoin = kCALineJoinMiter
-        layer.lineCap = kCALineCapSquare
+        layer.lineJoin = CAShapeLayerLineJoin.miter
+        layer.lineCap = CAShapeLayerLineCap.square
         layer.strokeColor = NSColor.init(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).cgColor
         layer.path = self.bezierPath.cgPath
         layer.strokeEnd = 1
@@ -39,8 +39,8 @@ class ProgressView: NSView {
         layer.fillColor = NSColor.clear.cgColor
         layer.frame = self.bounds
         layer.lineWidth = 2
-        layer.lineJoin = kCALineJoinMiter
-        layer.lineCap = kCALineCapSquare
+        layer.lineJoin = CAShapeLayerLineJoin.miter
+        layer.lineCap = CAShapeLayerLineCap.square
         layer.strokeColor = NSColor.mainColor.cgColor
         layer.path = self.bezierPath.cgPath
         layer.strokeEnd = 0

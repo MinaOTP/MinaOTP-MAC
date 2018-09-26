@@ -100,7 +100,7 @@ class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
         lab.layer?.borderColor = NSColor.mainColor.cgColor
         return lab
     }()
-    override func controlTextDidChange(_ obj: Notification) {
+    func controlTextDidChange(_ obj: Notification) {
         if self.remarkTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
             saveButton.isEnabled = false
         }else{

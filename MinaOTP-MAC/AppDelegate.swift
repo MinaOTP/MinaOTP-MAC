@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
         if let button = statusItem.button{
-            button.image = NSImage.init(named: NSImage.Name(rawValue: "close"))
+            button.image = NSImage.init(named: "close")
             button.image?.size = NSSize(width: 20, height: 20)
             button.action = #selector(AppDelegate.mouseDownAction)
             button.sendAction(on: [.leftMouseDown, .rightMouseDown])
@@ -130,13 +130,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     }
     func popoverWillShow(_ notification: Notification) {
         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"reload"])
-        statusItem.button?.image = NSImage.init(named: NSImage.Name(rawValue: "open"))
+        statusItem.button?.image = NSImage.init(named: "open")
         statusItem.button?.image?.size = NSSize(width: 20, height: 20)
 
     }
     func popoverDidClose(_ notification: Notification) {
         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"close"])
-        statusItem.button?.image = NSImage.init(named: NSImage.Name(rawValue: "close"))
+        statusItem.button?.image = NSImage.init(named: "close")
         statusItem.button?.image?.size = NSSize(width: 20, height: 20)
     }
 
@@ -152,6 +152,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         
     }
     @objc func tappedDoubleCommandKey() {
+        print("11111111111111")
         if self.popover.isShown {
             self.popover.close()
         }else{

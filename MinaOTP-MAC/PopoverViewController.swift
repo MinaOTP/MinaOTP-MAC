@@ -80,7 +80,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }()
     lazy var timer:Timer! = {
         let t = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-        RunLoop.main.add(t, forMode: .commonModes)
+        RunLoop.main.add(t, forMode: RunLoop.Mode.common)
         return t
     }()
     private func config() {
@@ -333,8 +333,8 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
     func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
 
-        if info.draggingSource() as! NSTableView == totpTableView{
-            let data = info.draggingPasteboard().data(forType: NSPasteboard.PasteboardType.string)
+        if info.draggingSource as! NSTableView == totpTableView{
+            let data = info.draggingPasteboard.data(forType: NSPasteboard.PasteboardType.string)
             let rowIndexes:NSIndexSet = NSKeyedUnarchiver.unarchiveObject(with: data!) as! NSIndexSet
 
             if rowIndexes.firstIndex == row{

@@ -10,7 +10,7 @@ import Cocoa
 class StatusItemView: NSControl {
 
     var statusItem = NSStatusItem.init()
-    let image = NSImage.init(named: NSImage.Name(rawValue: "icon"))
+    let image = NSImage.init(named: "icon")
     weak var delegate : StatusItemViewDelegate?
 
     override init(frame frameRect: NSRect) {

@@ -34,6 +34,7 @@
 		20FC650D21185C7A002DF759 /* EditPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650C21185C7A002DF759 /* EditPopoverViewController.swift */; };
 		20FC650F21194BE9002DF759 /* AddWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC650E21194BE9002DF759 /* AddWindow.swift */; };
 		20FC6513211A9B3B002DF759 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FC6512211A9B3B002DF759 /* StatusItemView.swift */; };
+		44FBB272215BDBF100B61136 /* BoolExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FBB271215BDBF100B61136 /* BoolExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		20FC6512211A9B3B002DF759 /* StatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		20FC6514211AE33B002DF759 /* MinaOTP-MAC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MinaOTP-MAC.entitlements"; sourceTree = "<group>"; };
 		20FC6517211B017D002DF759 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		44FBB271215BDBF100B61136 /* BoolExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		20A17A61211D90350052792D /* Magnet */ = {
 			isa = PBXGroup;
 			children = (
+				44FBB271215BDBF100B61136 /* BoolExtensions.swift */,
 				20A17A62211D90350052792D /* HotKeyCenter.swift */,
 				20A17A63211D90350052792D /* KeyCodeTransformer.swift */,
 				20A17A64211D90350052792D /* KeyTransformer.swift */,
@@ -295,6 +298,7 @@
 				TargetAttributes = {
 					20FBA95221106EB10017BFC3 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.NetworkExtensions = {
 								enabled = 0;
@@ -306,10 +310,12 @@
 					};
 					20FBA96221106EB20017BFC3 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 20FBA95221106EB10017BFC3;
 					};
 					20FBA96D21106EB20017BFC3 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 20FBA95221106EB10017BFC3;
 					};
 				};
@@ -381,6 +387,7 @@
 				20FBA95721106EB10017BFC3 /* AppDelegate.swift in Sources */,
 				20FC650D21185C7A002DF759 /* EditPopoverViewController.swift in Sources */,
 				20776B092114318B00C94441 /* GeneratorTotp.m in Sources */,
+				44FBB272215BDBF100B61136 /* BoolExtensions.swift in Sources */,
 				20A17A6A211D90360052792D /* KeyCodeTransformer.swift in Sources */,
 				20FC65092117F84D002DF759 /* CSTableRowView.swift in Sources */,
 				20A17A8B2126BD260052792D /* ScanWindow.swift in Sources */,
@@ -587,7 +594,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MinaOTP-MAC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MinaOTP-MAC/MinaOTP-MAC-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -608,7 +615,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MinaOTP-MAC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MinaOTP-MAC/MinaOTP-MAC-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -628,7 +635,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinaOTP-MAC.app/Contents/MacOS/MinaOTP-MAC";
 			};
 			name = Debug;
@@ -649,7 +656,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinaOTP-MAC.app/Contents/MacOS/MinaOTP-MAC";
 			};
 			name = Release;
@@ -669,7 +676,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = "MinaOTP-MAC";
 			};
 			name = Debug;
@@ -689,7 +696,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = "MinaOTP-MAC";
 			};
 			name = Release;

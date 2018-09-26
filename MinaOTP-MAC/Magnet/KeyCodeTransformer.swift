@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Shunsuke Furubayashi. All rights reserved.
 //
 
+import AppKit
 import Foundation
-import Cocoa
 import Carbon
 
 open class KeyCodeTransformer {

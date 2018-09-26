@@ -114,7 +114,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate, ScanWindowDelegate{
         return lab
     }()
     // MARK: - FUNC
-    override func controlTextDidChange(_ obj: Notification) {
+    func controlTextDidChange(_ obj: Notification) {
         if self.remarkTextField.stringValue.count == 0 || self.issuerTextField.stringValue.count == 0 || self.secretTextFiled.stringValue.count == 0{
             saveButton.isEnabled = false
         }else{

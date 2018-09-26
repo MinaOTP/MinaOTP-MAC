@@ -41,7 +41,7 @@ class ScanWindow: NSWindow, NSWindowDelegate{
         imgView.wantsLayer = true
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.layer?.backgroundColor = NSColor.clear.cgColor
-        imgView.image = NSImage.init(named: NSImage.Name(rawValue: "image_normal"))
+        imgView.image = NSImage.init(named: "image_normal")
         imgView.imageAlignment = .alignCenter
         imgView.imageScaling = .scaleProportionallyUpOrDown
 
@@ -70,9 +70,9 @@ class ScanWindow: NSWindow, NSWindowDelegate{
         if (feature?.count)! > 0 {
             let f = feature?.first as! CIQRCodeFeature
             if f.messageString?.contains("otpauth://totp/") == false || f.messageString?.contains("secret=") == false || f.messageString?.contains("issuer=") == false{
-                imgView.image = NSImage.init(named: NSImage.Name(rawValue: "image_normal"))
+                imgView.image = NSImage.init(named: "image_normal")
             }else{
-                imgView.image = NSImage.init(named: NSImage.Name(rawValue: "image_selected"))
+                imgView.image = NSImage.init(named: "image_selected")
                 self.delegate = nil
                 self.title = NSLocalizedString("scan_qr_success", comment: "")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -81,7 +81,7 @@ class ScanWindow: NSWindow, NSWindowDelegate{
                 }
             }
         }else{
-            imgView.image = NSImage.init(named: NSImage.Name(rawValue: "image_normal"))
+            imgView.image = NSImage.init(named: "image_normal")
         }
     }
     func windowWillResize(_ sender: NSWindow, to frameSize: NSSize) -> NSSize {
