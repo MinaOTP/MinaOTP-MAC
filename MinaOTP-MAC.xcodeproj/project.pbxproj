@@ -628,9 +628,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BB5VK42K87;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "MinaOTP-MACTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -639,6 +640,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinaOTP-MAC.app/Contents/MacOS/MinaOTP-MAC";
 			};
@@ -649,9 +651,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BB5VK42K87;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "MinaOTP-MACTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -660,6 +663,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MinaOTP-MAC.app/Contents/MacOS/MinaOTP-MAC";
 			};
@@ -669,9 +673,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BB5VK42K87;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "MinaOTP-MACUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -680,6 +685,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = "MinaOTP-MAC";
 			};
@@ -689,9 +695,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BB5VK42K87;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "MinaOTP-MACUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -700,6 +707,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.snwjm.MinaOTP-MACUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = "MinaOTP-MAC";
 			};
