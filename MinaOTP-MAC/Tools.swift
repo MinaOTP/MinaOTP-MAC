@@ -57,8 +57,6 @@ extension NSColor {
     }
 }
 
-
-
 extension NSBezierPath {
 
     public var cgPath: CGPath {
@@ -76,6 +74,8 @@ extension NSBezierPath {
                 path.addCurve(to: points[2], control1: points[0], control2: points[1])
             case .closePath:
                 path.closeSubpath()
+            @unknown default:
+                fatalError("Unknown path type.")
             }
         }
 
@@ -114,7 +114,7 @@ class Tools: NSObject {
         if url.contains("otpauth://totp/") == false || url.contains("issuer") == false || url.contains("secret") == false{
             return params as! Dictionary<String, Any>
         }
-        var index = url.index(of: "?")
+        var index = url.firstIndex(of: "?")
         if index == nil {
             return params as! Dictionary<String, Any>
         }

@@ -23,7 +23,7 @@ class CellView: NSView {
 
     lazy var codeTextField: NSTextField = {
         let lab = NSTextField.init(frame: CGRect(x: 198, y: 30, width: 90, height: 20))
-        lab.textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
+        lab.textColor = .labelColor //NSColor(red: 0, green: 0, blue: 0, alpha: 0.8)
         lab.stringValue = ""
         lab.isBordered = false
         lab.isEditable = false
@@ -35,7 +35,7 @@ class CellView: NSView {
     }()
     lazy var remarkTextField: NSTextField = {
         let lab = NSTextField.init(frame: CGRect(x: 12, y: 30, width: 160, height: 20))
-        lab.textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
+        lab.textColor = .labelColor //NSColor(red: 0, green: 0, blue: 0, alpha: 0.8)
         lab.stringValue = ""
         lab.isBordered = false
         lab.isEditable = false
@@ -47,7 +47,7 @@ class CellView: NSView {
     }()
     lazy var issuerTextField: NSTextField = {
         let lab = NSTextField.init(frame: CGRect(x: 14, y: 10, width: 100, height: 12))
-        lab.textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
+        lab.textColor = .labelColor //NSColor(red: 0, green: 0, blue: 0, alpha: 0.8)
         lab.stringValue = ""
         lab.isBordered = false
         lab.isEditable = false
@@ -58,7 +58,7 @@ class CellView: NSView {
     }()
     lazy var hotKeyTextField: NSTextField = {
         let lab = NSTextField.init(frame: CGRect(x: 263, y: 10, width: 25, height: 12))
-        lab.textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
+        lab.textColor = .labelColor // NSColor(red: 0, green: 0, blue: 0, alpha: 0.8)
         lab.stringValue = ""
         lab.isBordered = false
         lab.isEditable = false

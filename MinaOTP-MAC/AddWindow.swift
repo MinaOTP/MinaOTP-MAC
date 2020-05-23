@@ -17,7 +17,7 @@ class AddWindow: NSWindow, NSTextFieldDelegate, ScanWindowDelegate{
     let scanButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 290, width: 150, height: 24), title: NSLocalizedString("scan_qr_image_btn_title", comment: ""))
 
 
-    let textColor = NSColor.init(red: 0, green: 0, blue: 0, alpha: 0.8)
+    let textColor = NSColor.labelColor//.withAlphaComponent(0.8)
 
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: style, backing: backingStoreType, defer: flag)
@@ -35,9 +35,9 @@ class AddWindow: NSWindow, NSTextFieldDelegate, ScanWindowDelegate{
         self.standardWindowButton(.zoomButton)?.isHidden = true
 
         self.isOpaque = false
-        self.backgroundColor = NSColor.clear
+        //self.backgroundColor = NSColor.clear
         self.titlebarAppearsTransparent = true
-        self.backgroundColor = NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.9)
+        //self.backgroundColor = NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.9)
         self.isMovableByWindowBackground = true
 
         self.contentView?.addSubview(cancelButton)

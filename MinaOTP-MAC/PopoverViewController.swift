@@ -53,7 +53,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         tab.delegate = self;
         tab.dataSource = self;
         tab.enclosingScrollView?.drawsBackground = false
-        tab.backgroundColor = NSColor.clear
+        tab.backgroundColor = .clear
         tab.headerView = NSTableHeaderView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         let column1 = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column1"))
         column1.width = 300
@@ -68,7 +68,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }()
     lazy var bgScrollView: NSScrollView = {
         let scrollView = NSScrollView.init(frame: CGRect(x: 0, y: 0, width: 300, height: 350))
-        scrollView.contentView.backgroundColor = NSColor.clear
+        scrollView.contentView.backgroundColor = .clear
         scrollView.documentView = totpTableView
         totpTableView.enclosingScrollView?.drawsBackground = false
         return scrollView
