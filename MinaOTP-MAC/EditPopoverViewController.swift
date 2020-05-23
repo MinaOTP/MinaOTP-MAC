@@ -8,12 +8,12 @@
 
 import Cocoa
 
-class EditPopoverViewController: NSViewController,NSTextFieldDelegate {
+class EditPopoverViewController: NSViewController, NSTextFieldDelegate {
 
     let cancelButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 12, y: 12, width: 48, height: 24), title: NSLocalizedString("cancel", comment: ""))
     let saveButton = CustomFlatButton().customFlatButton(frame: NSRect(x: 140, y: 12, width: 48, height: 24), title: NSLocalizedString("save", comment: ""))
     var editRow:Int = -1
-    let textColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.8)
+    let textColor: NSColor = .labelColor //NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.8)
 
     override func loadView() {
         self.view = NSView(frame: CGRect(x: 0, y: 0, width: 200, height: 250))

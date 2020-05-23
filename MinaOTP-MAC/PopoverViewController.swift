@@ -43,8 +43,8 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
     lazy var editPopoverView : NSPopover = {
         let pop = NSPopover()
-        pop.behavior = NSPopover.Behavior(rawValue: 1)!
-        pop.appearance = NSAppearance.init(named: .vibrantLight)
+        pop.behavior = .transient
+        //pop.appearance = NSAppearance.init(named: .vibrantLight)
         pop.delegate = self
         return pop
     }()
