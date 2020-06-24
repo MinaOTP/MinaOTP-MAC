@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import MinaOTP_MAC
+//@testable import MinaOTP_MAC
 
 class MinaOTP_MACTests: XCTestCase {
     

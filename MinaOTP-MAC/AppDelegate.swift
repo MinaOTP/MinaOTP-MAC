@@ -15,7 +15,7 @@ import Foundation
 class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDelegate{
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    let popover = NSPopover.init()
+    let popover = NSPopover()
     let popoverVC = PopoverViewController()
 
     struct GitHubInfoModel:Codable {
@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
         if let button = statusItem.button{
-            button.image = NSImage.init(named: "close")
+            button.image = NSImage(named: "close")
             button.image?.size = NSSize(width: 20, height: 20)
             button.action = #selector(AppDelegate.mouseDownAction)
             button.sendAction(on: [.leftMouseDown, .rightMouseDown])
@@ -36,8 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate, NSMenuDel
         }
         statusItem.highlightMode = true
 
-        popover.behavior = NSPopover.Behavior(rawValue: 1)!
-        popover.appearance = NSAppearance.init(named: .vibrantLight)
+        popover.behavior = .transient
+        //popover.appearance = NSAppearance.init(named: .vibrantLight)
         popover.contentViewController = popoverVC
         popover.delegate = self
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { (event) in
