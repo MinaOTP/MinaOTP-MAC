@@ -22,8 +22,7 @@ class EditPopoverViewController: NSViewController, NSTextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.config()
-        let defaults = UserDefaults.standard
-        let allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+        let allItems = DataManager.get()
         let totpDic = Tools().totpDictionaryFormat(code: allItems[editRow])
         remarkTextField.stringValue = (totpDic["remark"] as? String)!
         issuerTextField.stringValue = (totpDic["issuer"] as? String)!
@@ -119,11 +118,10 @@ class EditPopoverViewController: NSViewController, NSTextFieldDelegate {
         let otp = Tools().totpStringFormat(remark: self.remarkTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
 
         // 将数据保存到UserDefaults
-        let defaults = UserDefaults.standard
-        var allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+        var allItems  = DataManager.get()
         allItems.remove(at: editRow)
         allItems.insert(otp, at: editRow)
-        defaults.set(allItems, forKey: "MinaOtpMAC")
+        DataManager.save(allItems)
         NotificationCenter.default.post(name: NSNotification.Name("reloadData"), object: self, userInfo: ["type":"edit_save"])
     }
 
