@@ -54,7 +54,7 @@ MinaOTP-MAC 是一款运行在macOS上的App. 是基于[RFC6238](https://tools.i
 * 快捷键:   ⌘⌘   (双击 ⌘ 键) 
 
 ### 将来
-* [ ] 同步到icloud 
+* [x] 同步到icloud 
 * [ ] 添加快捷键用来复制token 
 
 ### 感谢

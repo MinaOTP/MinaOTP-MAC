@@ -28,6 +28,9 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.config()
+        DataManager.initial { [weak self] in
+            self?.reloadData()
+        }
 
         NotificationCenter.default.addObserver(self, selector: #selector(notificationAction), name: NSNotification.Name(rawValue:"reloadData"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(notificationAction), name: NSNotification.Name(rawValue:"addData"), object: nil)
@@ -116,8 +119,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
     func reloadData() {
         totpArray.removeAll()
-        let defaults = UserDefaults.standard
-        totpArray  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+        totpArray  = DataManager.get()
         totpTableView.reloadData()
     }
     func startTimer() {
@@ -172,8 +174,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         print(clickedRow)
         totpArray.remove(at: clickedRow)
         totpTableView.removeRows(at: [clickedRow], withAnimation: .slideRight)
-        let defaults = UserDefaults.standard
-        defaults.set(self.totpArray, forKey: "MinaOtpMAC")
+        DataManager.save(self.totpArray)
     }
     @objc func editRowAction() {
         stopTimer()
@@ -211,14 +212,13 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
                 let otpModelArray = try decoder.decode([OtpModel].self, from: jsonData! as Data)
 
                 // 将数据保存到UserDefaults
-                let defaults = UserDefaults.standard
-                var allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+                var allItems = DataManager.get()
 
                 for item in otpModelArray{
                     let otp = Tools().totpStringFormat(remark: item.remark, issuer: item.issuer, secret: item.secret)
                     allItems.append(otp)
                 }
-                defaults.set(allItems, forKey: "MinaOtpMAC")
+                DataManager.save(allItems)
                 Tools().showAlert(message: NSLocalizedString("add_success_tip", comment: ""))
 
             } catch let error{
@@ -238,8 +238,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         if i == NSApplication.ModalResponse.OK {
 
             // 将数据保存到UserDefaults
-            let defaults = UserDefaults.standard
-            let allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+            let allItems  = DataManager.get()
             var temArray = [Any]()
             for item in allItems{
                 let otpDic = Tools().totpDictionaryFormat(code: item)
@@ -349,8 +348,7 @@ class PopoverViewController: NSViewController, NSTableViewDelegate, NSTableViewD
             }else{
                 totpArray.insert(value, at: row)
             }
-            let defaults = UserDefaults.standard
-            defaults.set(totpArray, forKey: "MinaOtpMAC")
+            DataManager.save(totpArray)
             totpTableView.reloadData()
             startTimer()
             return true

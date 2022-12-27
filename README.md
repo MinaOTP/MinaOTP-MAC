@@ -54,7 +54,7 @@ Scan Qr Code
 * Hotkey:   ⌘⌘   (double click ⌘) 
 
 ### Todo
-* [ ] sync to icloud
+* [x] sync to icloud
 * [ ] add hotkey to copy token 
 
 ### Acknowledgements

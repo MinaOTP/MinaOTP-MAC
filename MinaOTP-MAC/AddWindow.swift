@@ -138,10 +138,9 @@ class AddWindow: NSWindow, NSTextFieldDelegate, ScanWindowDelegate{
         let otp = Tools().totpStringFormat(remark: self.remarkTextField.stringValue, issuer: self.issuerTextField.stringValue, secret: self.secretTextFiled.stringValue)
 
         // 将数据保存到UserDefaults
-        let defaults = UserDefaults.standard
-        var allItems  = defaults.value(forKey: "MinaOtpMAC") as? [String] ?? []
+        var allItems  = DataManager.get()
         allItems.append(otp)
-        defaults.set(allItems, forKey: "MinaOtpMAC")
+        DataManager.save(allItems)
         ShowTips().showTip(message: NSLocalizedString("add_success_tip", comment: ""), view: self.contentView!)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.close()
