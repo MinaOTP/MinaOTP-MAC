@@ -51,7 +51,8 @@ Scan Qr Code
 * Remove a existed token
 * Backup datas to local json files
 * Import datas from local json files
-* Hotkey:   ⌘⌘   (double click ⌘) 
+* Hotkey:   ⌘⌘   (double click ⌘)
+* Double click to copy token
 
 ### Todo
 * [x] sync to icloud
